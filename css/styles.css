@@ -1,0 +1,22 @@
+html{
+  text-align: center;
+}
+body{
+  font-family: sans-serif;
+}
+
+.container-fluid{
+  margin: 10 10%;
+}
+
+.elementSection{
+  align-items: center;
+}
+
+.navbar{
+  padding: 5px 10px;
+}
+
+.nav-item{
+  padding-left: 10px;
+}
