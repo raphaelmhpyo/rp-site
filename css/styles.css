@@ -1,15 +1,58 @@
 body{
-  font-family: sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1, h3{
+  font-family: 'Montserrat', sans-serif;
 }
 
 .container-fluid{
-  margin: 10 10%;
+  padding: 0;
 }
 
+/* Navbar styles */
 .navbar{
-  padding: 5px 10px;
+  padding: 5px 30px;
 }
 
 .nav-item{
-  padding-left: 10px;
+  padding-left: 20px;
+}
+
+/* Title String styless */
+.titleText{
+  text-align: center;
+}
+
+.bodyDiv{
+  padding: 10px 20%;
+}
+
+.inputItem{
+  padding: 5px 10%;
+}
+
+/* Input/Output Columns styles */
+.col-md-6.bodyDiv{
+  padding: 10px 10%;
+}
+
+.outputTableColumn{
+  padding: 0 5%;
+}
+
+table{
+  width: 100%;
+}
+
+/* Input Section styles */
+.calcButton{
+  width: 100%;
+  margin: 10px 0;
+}
+
+#income{
+  width: 100%;
+  margin: 5px 0 10px 0;
+  padding: 0 0 0 10px;
 }

@@ -36,7 +36,8 @@ function incomeDistribution(){
   var sm = income * 0.1;
   var spl = income * 0.025;
 
-  var output = "\nMojo: $" + mojo.toFixed(2) + "\nParents' Gift: $" + parents.toFixed(2) + "\nShares: $" + shares.toFixed(2) + "\nFire Extinguisher: $" + fe.toFixed(2) + "\nDaily Expenses: $" + de.toFixed(2) + "\nSmile: $" + sm.toFixed(2) + "\nSplurge: $" + spl.toFixed(2);
-
+  var categoriesText = "Mojo:\nParents' Gift:\nShares:\nFire Extinguisher:\nDaily Expenses:\nSmile:\nSplurge:"
+  var output = "$" + mojo.toFixed(2) + "\n$" + parents.toFixed(2) + "\n$" + shares.toFixed(2) + "\n$" + fe.toFixed(2) + "\n$" + de.toFixed(2) + "\n$" + sm.toFixed(2) + "\n$" + spl.toFixed(2);
+  document.querySelector("#calculatorOutputCategories").innerText = categoriesText;
   document.querySelector("#calculatorOutput").innerText = output;
 }
