@@ -40,8 +40,8 @@ function paedCalculation() {
     lma = 3;
   }
 
-  var paedAnaesCategories = "Weight (kg):\nsBP (mmHg):\n\nShock (J):\nAmiodarone (mg):\nAdrenaline (mcg):\nAtropine (mcg):\n\nETT size:\nETT depth (cm):\nLMA size:\n\nFentanyl (mcg):\nPropofol (mg):\nSuxamethonium (mg):\n\nOndansetron (mg):\nDexamethasone (mg):\nParacetamol (mg):\nIbuprofen (mg):\nKetorolac (mg):";
-  var paedAnaesOutput = weight + "\n" + sbp + "\n\n" + shock + "\n" + amiodarone + "\n" + adrenaline + "\n" + atropine + "\n\n" + ett + "\n" + depth + "\n" + lma + "\n\n" + fent + "\n" + prop + "\n" + sux + "\n\n" + ondans + "\n" + dexa + "\n" + paracetamol + "\n" + ibuprofen + "\n" + ketorolac;
+  var paedAnaesCategories = "Age (years):\nWeight (kg):\nsBP (mmHg):\n\nShock (J):\nAmiodarone (mg):\nAdrenaline (mcg):\nAtropine (mcg):\n\nETT size:\nETT depth (cm):\nLMA size:\n\nFentanyl (mcg):\nPropofol (mg):\nSuxamethonium (mg):\n\nOndansetron (mg):\nDexamethasone (mg):\nParacetamol (mg):\nIbuprofen (mg):\nKetorolac (mg):";
+  var paedAnaesOutput = age + "\n" + weight + "\n" + sbp + "\n\n" + shock + "\n" + amiodarone + "\n" + adrenaline + "\n" + atropine + "\n\n" + ett + "\n" + depth + "\n" + lma + "\n\n" + fent + "\n" + prop + "\n" + sux + "\n\n" + ondans + "\n" + dexa + "\n" + paracetamol + "\n" + ibuprofen + "\n" + ketorolac;
   document.querySelector("#paedCalculatorOutputCategories").innerText = paedAnaesCategories;
   document.querySelector("#paedCalculatorOutput").innerText = paedAnaesOutput;
 }
