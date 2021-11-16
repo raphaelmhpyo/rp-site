@@ -18,6 +18,7 @@ function paedCalculation() {
   var fent = weight * 2;
   var prop = weight * 4;
   var sux = weight * 2;
+  var cefazolin = weight * 50;
   var ondans = (weight * 0.15).toFixed(1);
   var dexa = (weight * 0.15).toFixed(1);
   var paracetamol = weight * 15;
@@ -40,8 +41,8 @@ function paedCalculation() {
     lma = 3;
   }
 
-  var paedAnaesCategories = "Age (years):\nWeight (kg):\nsBP (mmHg):\n\nShock (J):\nAmiodarone (mg):\nAdrenaline (mcg):\nAtropine (mcg):\n\nETT size:\nETT depth (cm):\nLMA size:\n\nFentanyl (mcg):\nPropofol (mg):\nSuxamethonium (mg):\n\nOndansetron (mg):\nDexamethasone (mg):\nParacetamol (mg):\nIbuprofen (mg):\nKetorolac (mg):";
-  var paedAnaesOutput = age + "\n" + weight + "\n" + sbp + "\n\n" + shock + "\n" + amiodarone + "\n" + adrenaline + "\n" + atropine + "\n\n" + ett + "\n" + depth + "\n" + lma + "\n\n" + fent + "\n" + prop + "\n" + sux + "\n\n" + ondans + "\n" + dexa + "\n" + paracetamol + "\n" + ibuprofen + "\n" + ketorolac;
+  var paedAnaesCategories = "Age (years):\nWeight (kg):\nsBP (mmHg):\n\nShock (J):\nAmiodarone (mg):\nAdrenaline (mcg):\nAtropine (mcg):\n\nETT size:\nETT depth (cm):\nLMA size:\n\nFentanyl (mcg):\nPropofol (mg):\nSuxamethonium (mg):\nCefazolin (mg):\n\nOndansetron (mg):\nDexamethasone (mg):\nParacetamol (mg):\nIbuprofen (mg):\nKetorolac (mg):";
+  var paedAnaesOutput = age + "\n" + weight + "\n" + sbp + "\n\n" + shock + "\n" + amiodarone + "\n" + adrenaline + "\n" + atropine + "\n\n" + ett + "\n" + depth + "\n" + lma + "\n\n" + fent + "\n" + prop + "\n" + sux + "\n"+ cefazolin + "\n\n" + ondans + "\n" + dexa + "\n" + paracetamol + "\n" + ibuprofen + "\n" + ketorolac;
   document.querySelector("#paedCalculatorOutputCategories").innerText = paedAnaesCategories;
   document.querySelector("#paedCalculatorOutput").innerText = paedAnaesOutput;
 }
