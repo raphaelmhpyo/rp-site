@@ -1,3 +1,17 @@
+function localAnaesCalculation(){
+
+// Todo:
+// - Input formulae
+// - Decide whether obese or not and choose TBW vs LBW
+// - Display output as total volume + relevant weight and forumula used
+
+  var totalBodyWeight = 0
+  var BMI = 0
+  var height = 0
+  var leanBodyWeight = 0
+}
+
+
 function paedCalculation() {
   // Declare variables for entered inputs
   var age = Number($("#ageEntered").val());

@@ -71,3 +71,9 @@ table{
 .contactInput{
   width:100%;
 }
+
+/* Reference Footer styles */
+.refFooter{
+  position: fixed;
+  bottom: 0;
+}

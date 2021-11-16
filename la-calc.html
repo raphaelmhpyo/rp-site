@@ -4,7 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <title>rp</title>
+  <title>rp - LA Dose Calculator</title>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +54,7 @@
             <a class="nav-link" href="crash-landing.html">Crash Landing</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="fex-advice.html">FEx Advice</a>
+            <a class="nav-link" href="fex-advice.html">ANZCA FEx Resources</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
@@ -66,15 +66,68 @@
       </div>
     </nav>
   </div>
-  <!-- Navbar code ends here-->
 
-  <div class="bodyDiv container-fluid">
-    <h1 class="titleText">Dr. Raphael Pyo</h1>
-    <h2>Home page</h2>
+<!--
+Tasks to do:
+- Find Bootstrap input form that works well for height, weight, LA, concentration
+- Clear form button
+- Output will be the total volume in big letters, with relevant formula
+ -->
+
+<div class="container-fluid">
+  <div>
+    <h1 class="bodyDiv titleText">Local Anaesthetic Dose Calculator</h1>
+    <div class="row">
+      <div class="col-md-6 inputSection bodyDiv">
+        <div class="container-fluid">
+          <input class="inputItem inputBox" type="number" name="heightInput" min="0" required placeholder="Enter height (m)" id="heightEntered">
+          <input class="inputItem inputBox" type="number" name="weightInput" min="0" required placeholder="Enter weight (kg)" id="weightEntered">
+
+        </div>
+        <div class="container-fluid">
+          <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="localAnaesCalculation()">Calculate</button>
+        </div>
+      </div>
+      <div class="col-md-6 outputSection bodyDiv">
+        <h3 class="titleText">Calculator output:</h3>
+        <table>
+          <tr>
+            <td class="outputTableColumn">
+              <p id="laCalculatorOutput"></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
+</div>
 
-
-
+<script src="index.js" charset="utf-8"></script>
 </body>
 
-</html>
+<footer>
+  <!-- Reference section  -->
+  <div class="accordion container-fluid refFooter" id="accordionLARef">
+    <div class="card">
+      <div class="card-header" id="LARef">
+        <h2 class="mb-0 accordionButton">
+          <button class="btn btn-link btn-small collapsed" type="button" data-toggle="collapse" data-target="#collapseLARef" aria-expanded="false" aria-controls="collapseLARef">
+            Show Formulae
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseLARef" class="collapse" aria-labelledby="LARef" data-parent="#accordionLARef">
+        <div class="card-body bodyDiv">
+        Lean Body Weight [Male] = (9270 x TBW) / (6680 + (216 x BMI))
+        <br />Lean Body Weight [Female] = (9270 x TBW) / (8780 + (224 x BMI))
+          <br /><br />Ropivacaine = 3mg/kg
+          <br />Bupivacaine = 2mg/kg
+          <br />Levobupivacaine = 2.5mg/kg
+          <br />Lidocaine = 3mg/kg [7mg/kg with adrenaline]
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
