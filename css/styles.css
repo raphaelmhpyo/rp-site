@@ -1,13 +1,24 @@
 body{
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1, h3{
   font-family: 'Montserrat', sans-serif;
 }
 
+p, li{
+  font-size: 1.2rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .container-fluid{
   padding: 0;
+}
+
+.accordionButton{
+  text-align: center;
+
 }
 
 /* Navbar styles */
