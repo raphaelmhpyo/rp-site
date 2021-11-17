@@ -46,7 +46,8 @@ switch(localChosen) {
 	  finalVolume = lidoAdr/(concChosen * 10);
 
   default:
-  	console.log(localChosen + concChosen);
+  	alert("Default action on switch statement");
+		console.log(localChosen + concChosen);
 }
 	alert("Calculation");
 $("#laCalculatorOutput").text("Chosen LA: "localChosen + ", Concenration: " + concChosen +"%, " + "Body Weight: " + finalBodyWeight +"kg, "+ "Final Volume: "+ finalVolume + "%");
