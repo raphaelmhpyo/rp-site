@@ -67,55 +67,62 @@
     </nav>
   </div>
 
-<!--
+  <!--
 Tasks to do:
 - Tidy up output section: Lined
 - Add sex selector
  -->
 
-<div class="container-fluid">
-  <div>
-    <h1 class="bodyDiv titleText">Local Anaesthetic Dose Calculator</h1>
-    <div class="row">
-      <div class="col-md-6 inputSection bodyDiv">
-        <div class="container-fluid">
-          <input class="inputItem inputBox" type="number" name="heightInput" min="0" required placeholder="Enter height (m)" id="heightEntered">
-          <input class="inputItem inputBox" type="number" name="weightInput" min="0" required placeholder="Enter weight (kg)" id="weightEntered">
-		  <label for="localChoice">Select Local Anaesthetic:</label>
-		<select id="localChoice" class="inputBox" name="localChoice">
-		  <option value="ropivacaine">Ropivacaine</option>
-		  <option value="bupivacaine">Bupivacaine</option>
-		  <option value="levobupivacaine">Levobupivacaine</option>
-		  <option value="lidocaineNeat">Lidocaine (without Adrenaline)</option>
-		  <option value="lidocaineAdr">Lidocaine (with Adrenaline)</option>
-		</select>
-		<input class="inputItem inputBox" type="number" name="localConcentration" min="0" required placeholder="Enter concentration (%)" id="localConcentrationEntered">
-				  
+  <div class="container-fluid">
+    <div>
+      <h1 class="bodyDiv titleText">Local Anaesthetic Dose Calculator</h1>
+      <div class="row">
+        <div class="col-md-6 inputSection bodyDiv">
+          <div class="container-fluid">
+            <input class="inputItem inputBox" type="number" name="heightInput" min="0" required placeholder="Enter height (m)" id="heightEntered">
+            <input class="inputItem inputBox" type="number" name="weightInput" min="0" required placeholder="Enter weight (kg)" id="weightEntered">
 
+            <label for="sexCategory">Sex (for LBW):</label>
+            <select id="sexCategory" class="inputBox" name="SexCategory">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+            </select>
+
+            <label for="localChoice">Select Local Anaesthetic:</label>
+            <select id="localChoice" class="inputBox" name="localChoice">
+              <option value="ropivacaine">Ropivacaine</option>
+              <option value="bupivacaine">Bupivacaine</option>
+              <option value="levobupivacaine">Levobupivacaine</option>
+              <option value="lidocaineNeat">Lidocaine (without Adrenaline)</option>
+              <option value="lidocaineAdr">Lidocaine (with Adrenaline)</option>
+            </select>
+            <input class="inputItem inputBox" type="number" name="localConcentration" min="0" required placeholder="Enter concentration (%)" id="localConcentrationEntered">
+
+
+          </div>
+          <div class="container-fluid">
+            <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="localAnaesCalculation()">Calculate</button>
+            <button type="button" class="btn btn-dark calcButton" name="reset" onclick="localAnaesReset()">Reset</button>
+          </div>
         </div>
-        <div class="container-fluid">
-          <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="localAnaesCalculation()">Calculate</button>
-		  <button type="button" class="btn btn-dark calcButton" name="reset" onclick="localAnaesReset()">Reset</button>
+        <div class="col-md-6 outputSection bodyDiv">
+          <h3 class="titleText">Calculator output:</h3>
+          <table>
+            <tr>
+              <td class="outputTableColumn">
+                <p id="laCalculatorClassOutput"></p>
+              </td>
+              <td class="outputTableColumn">
+                <p id="laCalculatorOutput"></p>
+              </td>
+            </tr>
+          </table>
         </div>
-      </div>
-      <div class="col-md-6 outputSection bodyDiv">
-        <h3 class="titleText">Calculator output:</h3>
-        <table>
-          <tr>
-	<td class="outputTableColumn">
-		<p id="laCalculatorClassOutput"></p>
-	</td>
-		  <td class="outputTableColumn">
-              <p id="laCalculatorOutput"></p>
-            </td>
-          </tr>
-        </table>
       </div>
     </div>
   </div>
-</div>
 
-<script src="index.js" charset="utf-8"></script>
+  <script src="index.js" charset="utf-8"></script>
 </body>
 
 <footer>
@@ -132,8 +139,8 @@ Tasks to do:
 
       <div id="collapseLARef" class="collapse" aria-labelledby="LARef" data-parent="#accordionLARef">
         <div class="card-body bodyDiv">
-        Lean Body Weight [Male] = (9270 x TBW) / (6680 + (216 x BMI))
-        <br />Lean Body Weight [Female] = (9270 x TBW) / (8780 + (224 x BMI))
+          Lean Body Weight [Male] = (9270 x TBW) / (6680 + (216 x BMI))
+          <br />Lean Body Weight [Female] = (9270 x TBW) / (8780 + (224 x BMI))
           <br /><br />Ropivacaine = 3mg/kg
           <br />Bupivacaine = 2mg/kg
           <br />Levobupivacaine = 2.5mg/kg

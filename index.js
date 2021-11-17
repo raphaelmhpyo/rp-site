@@ -1,14 +1,9 @@
 function localAnaesCalculation(){
 
-// Todo:
-// - Add function to "Reset" button - clear input fields
-// - Once sex selector placed, link it up to work with LBW calculation
-// - Add code for output sections
-
  	var height = Number($("#heightEntered").val());
  	var totalBodyWeight = Number($("#weightEntered").val());
  	var finalBodyWeight = 0;
- 	var sex = "female";
+ 	var sex = $("#sexCategory").val();
 	var BMI = totalBodyWeight/(height*height);
  	var localChosen = $("#localChoice").val();
  	var concChosen = Number($("#localConcentrationEntered").val());
@@ -16,10 +11,14 @@ function localAnaesCalculation(){
 
  	if (BMI >= 30){
  		if (sex === "female"){
- 			finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
+ 			finalBodyWeight = Math.round((9270*totalBodyWeight) / (8780 + (224*BMI)));
+      console.log("sex = female")
 		} else if (sex === "male"){
-			finalBodyWeight = (9370*totalBodyWeight) / (6680 + (216*BMI));
-		}
+			finalBodyWeight = Math.round((9370*totalBodyWeight) / (6680 + (216*BMI)));
+      console.log("sex = female")
+		} else {
+      console.log("something wrong after BMI if statement")
+    }
 	}else{
 		finalBodyWeight = totalBodyWeight;
 	}
@@ -29,40 +28,41 @@ function localAnaesCalculation(){
 	var levo = Math.round(2.5*finalBodyWeight);
 	var lidoNeat = Math.round(3*finalBodyWeight);
 	var lidoAdr = Math.round(7*finalBodyWeight);
+  var localName = ""
 
 	switch(localChosen) {
 		case "ropivacaine":
 			finalVolume = ropi/(concChosen * 10);
-			alert("ROPI" + localChosen + finalVolume);
+      localName = "Ropivacaine";
 			break;
 		case "bupivacaine":
 			finalVolume = bupi/(concChosen * 10);
-			alert("BUPI" + localChosen + finalVolume);
+      localName = "Bupivacaine";
 			break;
 		case "levobupivacaine":
 			finalVolume = levo/(concChosen * 10);
-			alert("LEVO" + localChosen + finalVolume);
+      localName = "Levobupivacaine";
 			break;
 		case "lidocaineNeat":
 			finalVolume = lidoNeat/(concChosen * 10);
-			alert("LIDONEAT" + localChosen + finalVolume);
+      localName = "Lidocaine (without adrenaline)";
 			break;
 		case "lidocaineAdr":
 			finalVolume = lidoAdr/(concChosen * 10);
-			alert("LIDOADR" + localChosen + finalVolume);
+      localName = "Lidocaine (with adrenaline)";
 			break;
 		default:
 			alert("Default action on switch statement");
 			console.log(localChosen + concChosen);
 			break;
 		}
-	var stringOutput = "Chosen LA: " + localChosen + ", Concentration: " + concChosen + "%, Body Weight: " + finalBodyWeight +"kg, Final Volume: "+ finalVolume + "mL"
-	$("#laCalculatorClassOutput").text("LA choice / Concentration / Body Weight / Final Volume");
-	$("#laCalculatorOutput").text(stringOutput);
+	var stringOutput = localName + "\n" + concChosen + "%\n" + finalBodyWeight +"kg\n"+ finalVolume + "mL"
+	document.querySelector("#laCalculatorClassOutput").innerText = "LA choice:\nConcentration\nBody Weight\nFinal Volume";
+	document.querySelector("#laCalculatorOutput").innerText = stringOutput;
 }
 
 function localAnaesReset(){
-	alert("Reset")
+	location.reload();
 }
 
 function paedCalculation() {
