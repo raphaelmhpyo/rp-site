@@ -1,57 +1,57 @@
-function localAnaesCalculation(){
+// function localAnaesCalculation(){
 
-// Todo:
-// - Display output as total volume + relevant weight and forumula used
+// // Todo:
+// // - Display output as total volume + relevant weight and forumula used
 
-var height = Number($("#heightEntered").val());
-var totalBodyWeight = Number($("#weightEntered").val());
-var finalBodyWeight = 0;
-var sex = "female";
-var BMI = totalBodyWeight/(height*height);
-var localChosen = $("#localChoice").val();
-var concChosen = Number($("#localConcentrationEntered").val());
-var finalVolume = 0;
+// var height = Number($("#heightEntered").val());
+// var totalBodyWeight = Number($("#weightEntered").val());
+// var finalBodyWeight = 0;
+// var sex = "female";
+// var BMI = totalBodyWeight/(height*height);
+// var localChosen = $("#localChoice").val();
+// var concChosen = Number($("#localConcentrationEntered").val());
+// var finalVolume = 0;
 
-if (BMI >= 30){
-	if (sex === "female)"{
-		finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
-		} else if (sex === "male"){
-			finalBodyWeight = (9370*totalBodyWeight) / (6680 + (216*BMI));
-		}
-	}else{
-		finalBodyWeight = totalBodyWeight;
-	}
+// if (BMI >= 30){
+// 	if (sex === "female)"{
+// 		finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
+// 		} else if (sex === "male"){
+// 			finalBodyWeight = (9370*totalBodyWeight) / (6680 + (216*BMI));
+// 		}
+// 	}else{
+// 		finalBodyWeight = totalBodyWeight;
+// 	}
 
-var ropi = Math.round(3*finalBodyWeight);
-var bupi = Math.round(2*finalBodyWeight);
-var levo = Math.round(2.5*finalBodyWeight);
-var lidoNeat = Math.round(3*finalBodyWeight);
-var lidoAdr = Math.round(7*finalBodyWeight);
+// var ropi = Math.round(3*finalBodyWeight);
+// var bupi = Math.round(2*finalBodyWeight);
+// var levo = Math.round(2.5*finalBodyWeight);
+// var lidoNeat = Math.round(3*finalBodyWeight);
+// var lidoAdr = Math.round(7*finalBodyWeight);
 
-switch(localChosen) {
-  case "ropivacaine":
-    finalVolume = ropi/(concChosen * 10);
+// switch(localChosen) {
+//   case "ropivacaine":
+//     finalVolume = ropi/(concChosen * 10);
 
-  case "bupivacaine":
-	  finalVolume = bupi/(concChosen * 10);
+//   case "bupivacaine":
+// 	  finalVolume = bupi/(concChosen * 10);
 
-	case "levobupivacaine":
-	  finalVolume = levo/(concChosen * 10);
+// 	case "levobupivacaine":
+// 	  finalVolume = levo/(concChosen * 10);
 
-	  case "lidocaineNeat":
-    // code block
-	  finalVolume = lidoNeat/(concChosen * 10);
+// 	  case "lidocaineNeat":
+//     // code block
+// 	  finalVolume = lidoNeat/(concChosen * 10);
 
-	  case "lidocaineAdr":
-	  finalVolume = lidoAdr/(concChosen * 10);
+// 	  case "lidocaineAdr":
+// 	  finalVolume = lidoAdr/(concChosen * 10);
 
-  default:
-  	console.log(localChosen + concChosen);
-}
+//   default:
+//   	console.log(localChosen + concChosen);
+// }
 
-$("#laCalculatorOutput").text("Chosen LA: "localChosen + ", Concenration: " + concChosen +"%, " + "Body Weight: " + finalBodyWeight +"kg, "+ "Final Volume: "+ finalVolume + "%");
+// $("#laCalculatorOutput").text("Chosen LA: "localChosen + ", Concenration: " + concChosen +"%, " + "Body Weight: " + finalBodyWeight +"kg, "+ "Final Volume: "+ finalVolume + "%");
 
-}
+// }
 
 function localAnaesReset(){
 	alert("Reset")
