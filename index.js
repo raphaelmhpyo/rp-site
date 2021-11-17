@@ -13,14 +13,14 @@ function localAnaesCalculation(){
 	var finalVolume = 0;
 
 	if (BMI >= 30){
-		if (sex === "female)"{
-			finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
-			} else if (sex === "male"){
-				finalBodyWeight = (9370*totalBodyWeight) / (6680 + (216*BMI));
-			}
-		}else{
-			finalBodyWeight = totalBodyWeight;
+		if (sex === "female"){
+		    finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
+		} else if (sex === "male"){
+			finalBodyWeight = (9370*totalBodyWeight) / (6680 + (216*BMI));
 		}
+	}else{
+		finalBodyWeight = totalBodyWeight;
+	}
 
 	var ropi = Math.round(3*finalBodyWeight);
 	var bupi = Math.round(2*finalBodyWeight);
