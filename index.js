@@ -48,9 +48,8 @@ switch(localChosen) {
   default:
   	console.log(localChosen + concChosen);
 }
-
+	alert("Calculation");
 $("#laCalculatorOutput").text("Chosen LA: "localChosen + ", Concenration: " + concChosen +"%, " + "Body Weight: " + finalBodyWeight +"kg, "+ "Final Volume: "+ finalVolume + "%");
-
 }
 
 function localAnaesReset(){
