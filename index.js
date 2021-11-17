@@ -14,7 +14,7 @@ function localAnaesCalculation(){
 
 	if (BMI >= 30){
 		if (sex === "female"){
-		    finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
+			finalBodyWeight = (9270*totalBodyWeight) / (8780 + (224*BMI));
 		} else if (sex === "male"){
 			finalBodyWeight = (9370*totalBodyWeight) / (6680 + (216*BMI));
 		}
@@ -31,18 +31,23 @@ function localAnaesCalculation(){
 	switch(localChosen) {
 		case "ropivacaine":
 			finalVolume = ropi/(concChosen * 10);
+			alert("ROPI" + localChosen + finalVolume);
 			break;
 		case "bupivacaine":
 			finalVolume = bupi/(concChosen * 10);
+			alert("BUPI" + localChosen + finalVolume);
 			break;
 		case "levobupivacaine":
 			finalVolume = levo/(concChosen * 10);
+			alert("LEVO" + localChosen + finalVolume);
 			break;
 		case "lidocaineNeat":
 			finalVolume = lidoNeat/(concChosen * 10);
+			alert("LIDONEAT" + localChosen + finalVolume);
 			break;
 		case "lidocaineAdr":
 			finalVolume = lidoAdr/(concChosen * 10);
+			alert("LIDOADR" + localChosen + finalVolume);
 			break;
 		default:
 			alert("Default action on switch statement");
@@ -51,7 +56,7 @@ function localAnaesCalculation(){
 		}
 
 	alert("Calculation");
-	$("#laCalculatorOutput").text("Chosen LA: "localChosen + ", Concenration: " + concChosen +"%, " + "Body Weight: " + finalBodyWeight +"kg, "+ "Final Volume: "+ finalVolume + "%");
+	$("#laCalculatorOutput").text("Chosen LA: " + localChosen + ", Concenration: " + concChosen + "%, Body Weight: " + finalBodyWeight +"kg, Final Volume: "+ finalVolume + "%");
 }
 
 function localAnaesReset(){
