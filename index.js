@@ -1,70 +1,136 @@
-function localAnaesCalculation(){
+//
+//
+//
+// ------------------------------------------------
+// Local Anaesthetic Calculation Below
+// ------------------------------------------------
+//
+//
+//
+function localAnaesCalculation() {
 
- 	var height = Number($("#heightEntered").val());
- 	var totalBodyWeight = Number($("#weightEntered").val());
- 	var finalBodyWeight = 0;
- 	var sex = $("#sexCategory").val();
-	var BMI = totalBodyWeight/(height*height);
- 	var localChosen = $("#localChoice").val();
- 	var concChosen = Number($("#localConcentrationEntered").val());
- 	var finalVolume = 0;
+  var height = Number($("#heightEntered").val());
+  var totalBodyWeight = Number($("#weightEntered").val());
+  var finalBodyWeight = 0;
+  var sex = $("#sexCategory").val();
+  var BMI = totalBodyWeight / (height * height);
+  var localChosen = $("#localChoice").val();
+  var concChosen = Number($("#localConcentrationEntered").val());
+  var finalVolume = 0;
+  var weightCategory = "TBW"
 
- 	if (BMI >= 30){
- 		if (sex === "female"){
- 			finalBodyWeight = Math.round((9270*totalBodyWeight) / (8780 + (224*BMI)));
-      console.log("sex = female")
-		} else if (sex === "male"){
-			finalBodyWeight = Math.round((9370*totalBodyWeight) / (6680 + (216*BMI)));
-      console.log("sex = female")
-		} else {
-      console.log("something wrong after BMI if statement")
+  if (height === 0){
+    finalBodyWeight = totalBodyWeight;
+  } else {
+    if (BMI >= 30) {
+      weightCategory = "LBW";
+      if (sex === "female") {
+        finalBodyWeight = Math.round((9270 * totalBodyWeight) / (8780 + (224 * BMI)));
+        console.log("sex = female");
+      } else if (sex === "male") {
+        finalBodyWeight = Math.round((9370 * totalBodyWeight) / (6680 + (216 * BMI)));
+        console.log("sex = female");
+      } else {
+        console.log("something wrong after BMI if statement");
+      }
+    } else {
+      weightCategory = "TBW";
+      finalBodyWeight = totalBodyWeight;
     }
-	}else{
-		finalBodyWeight = totalBodyWeight;
-	}
+  }
 
-	var ropi = Math.round(3*finalBodyWeight);
-	var bupi = Math.round(2*finalBodyWeight);
-	var levo = Math.round(2.5*finalBodyWeight);
-	var lidoNeat = Math.round(3*finalBodyWeight);
-	var lidoAdr = Math.round(7*finalBodyWeight);
+  var ropi = Math.round(3 * finalBodyWeight);
+  var bupi = Math.round(2 * finalBodyWeight);
+  var levo = Math.round(2.5 * finalBodyWeight);
+  var lidoNeat = Math.round(3 * finalBodyWeight);
+  var lidoAdr = Math.round(7 * finalBodyWeight);
   var localName = ""
 
-	switch(localChosen) {
-		case "ropivacaine":
-			finalVolume = ropi/(concChosen * 10);
+  switch (localChosen) {
+    case "ropivacaine":
+      finalVolume = ropi / (concChosen * 10);
       localName = "Ropivacaine";
-			break;
-		case "bupivacaine":
-			finalVolume = bupi/(concChosen * 10);
+      break;
+    case "bupivacaine":
+      finalVolume = bupi / (concChosen * 10);
       localName = "Bupivacaine";
-			break;
-		case "levobupivacaine":
-			finalVolume = levo/(concChosen * 10);
+      break;
+    case "levobupivacaine":
+      finalVolume = levo / (concChosen * 10);
       localName = "Levobupivacaine";
-			break;
-		case "lidocaineNeat":
-			finalVolume = lidoNeat/(concChosen * 10);
+      break;
+    case "lidocaineNeat":
+      finalVolume = lidoNeat / (concChosen * 10);
       localName = "Lidocaine (without adrenaline)";
-			break;
-		case "lidocaineAdr":
-			finalVolume = lidoAdr/(concChosen * 10);
+      break;
+    case "lidocaineAdr":
+      finalVolume = lidoAdr / (concChosen * 10);
       localName = "Lidocaine (with adrenaline)";
-			break;
-		default:
-			alert("Default action on switch statement");
-			console.log(localChosen + concChosen);
-			break;
-		}
-	var stringOutput = localName + "\n" + concChosen + "%\n" + finalBodyWeight +"kg\n"+ finalVolume + "mL"
-	document.querySelector("#laCalculatorClassOutput").innerText = "LA choice:\nConcentration\nBody Weight\nFinal Volume";
-	document.querySelector("#laCalculatorOutput").innerText = stringOutput;
+      break;
+    default:
+      alert("Default action on switch statement");
+      console.log(localChosen + concChosen);
+      break;
+  }
+
+
+  var dictLA = {
+    "Local Anaesthetic": localName,
+    "Concentration": concChosen + " %",
+    "Weight": finalBodyWeight + " kg (" + weightCategory + ")",
+    "Max Volume": finalVolume + " mL"
+  };
+
+  // Create a table to display the output
+
+  // get the reference for the body
+  var body = document.querySelector(".laCalcOutput");
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // iterate through the dictPaed object
+  for (var key in dictLA) {
+    var value = dictLA[key];
+
+    // create a row
+    var row = document.createElement("tr");
+    // create the left column cell
+    var leftCell = document.createElement("td");
+    // generate text for the left column
+    var leftCellText = document.createTextNode(key);
+    // append text into the left column cell
+    leftCell.appendChild(leftCellText);
+    // append the left cell to the row
+    row.appendChild(leftCell);
+    // do the same for the right column
+    var rightCell = document.createElement("td");
+    var rightCellText = document.createTextNode(value);
+    rightCell.appendChild(rightCellText);
+    row.appendChild(rightCell);
+    // append the row to the <tbody>
+    tblBody.appendChild(row);
+
+  }
+  // append the <tbody> into the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
 }
 
-function localAnaesReset(){
-	location.reload();
+function localAnaesReset() {
+  location.reload();
 }
-
+//
+//
+//
+// ------------------------------------------------
+// Paed Anaesthesia Calculation Below
+// ------------------------------------------------
+//
+//
+//
 function paedCalculation() {
   // Declare variables for entered inputs
   var age = Number($("#ageEntered").val());
@@ -74,27 +140,11 @@ function paedCalculation() {
   var wtCalc = (age + 4) * 2;
   if (wtEntered === 0) {
     var weight = wtCalc;
+    var wtCategory = "Estimated"
   } else {
     weight = wtEntered;
+    wtCategory = "Actual"
   }
-  var sbp = 80 + age * 2;
-  var shock = weight * 4;
-  var atropine = weight * 20;
-  var adrenaline = weight * 10;
-  var amiodarone = weight * 5;
-  var fent = weight * 2;
-  var prop = weight * 4;
-  var sux = weight * 2;
-  var cefazolin = weight * 50;
-  var ondans = (weight * 0.15).toFixed(1);
-  var dexa = (weight * 0.15).toFixed(1);
-  var paracetamol = weight * 15;
-  var ibuprofen = weight * 10;
-  var ketorolac = weight * 2;
-
-  var ett = (age / 4) + 4;
-  var depth = age / 2 + 12;
-
   // LMA sizing algorithm
   if (weight < 5) {
     var lma = 1;
@@ -108,14 +158,80 @@ function paedCalculation() {
     lma = 3;
   }
 
-  var paedAnaesCategories = "Age (years):\nWeight (kg):\nsBP (mmHg):\n\nShock (J):\nAmiodarone (mg):\nAdrenaline (mcg):\nAtropine (mcg):\n\nETT size:\nETT depth (cm):\nLMA size:\n\nFentanyl (mcg):\nPropofol (mg):\nSuxamethonium (mg):\nCefazolin (mg):\n\nOndansetron (mg):\nDexamethasone (mg):\nParacetamol (mg):\nIbuprofen (mg):\nKetorolac (mg):";
-  var paedAnaesOutput = age + "\n" + weight + "\n" + sbp + "\n\n" + shock + "\n" + amiodarone + "\n" + adrenaline + "\n" + atropine + "\n\n" + ett + "\n" + depth + "\n" + lma + "\n\n" + fent + "\n" + prop + "\n" + sux + "\n"+ cefazolin + "\n\n" + ondans + "\n" + dexa + "\n" + paracetamol + "\n" + ibuprofen + "\n" + ketorolac;
-  document.querySelector("#paedCalculatorOutputCategories").innerText = paedAnaesCategories;
-  document.querySelector("#paedCalculatorOutput").innerText = paedAnaesOutput;
+  var dictPaed = {
+    "Age": (age) + " years",
+    "Weight": (weight) + " kg (" + wtCategory + ")",
+    "......": "......",
+    "sBP": (80 + age * 2) + " mmHg",
+    "Shock": (weight * 4) + " J",
+    "Atropine": (weight * 20) + " mcg",
+    "Adrenaline": (weight * 10) + " mcg",
+    "Amiodarone": (weight * 5) + " mg",
+    "......     ": "......        ",
+    "ETT - Uncuffed": (age / 4) + 4,
+    "ETT Depth - Oral": ((age / 2) + 12) + " cm",
+    "LMA": lma,
+    "......  ": "......  ",
+    "Fentanyl": (weight * 2) + " mcg",
+    "Propofol": (weight * 4) + " mg",
+    "Suxamethonium IV": (weight * 2) + " mg",
+    "...... ": "...... ",
+    "Cefazolin": (weight * 50) + " mg",
+    "Ondansetron": ((weight * 0.15).toFixed(1)) + " mg",
+    "Dexamethasone": ((weight * 0.15).toFixed(1)) + " mg",
+    "Paracetamol": (weight * 15) + " mg",
+    "Ibuprofen": (weight * 10) + " mg",
+    "Ketorolac": (weight * 2) + " mg"
+  };
+
+  // Create a table to display the output
+
+  // get the reference for the body
+  var body = document.querySelector(".paedCalcTableDiv");
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // iterate through the dictPaed object
+  for (var key in dictPaed) {
+    var value = dictPaed[key];
+
+    // create a row
+    var row = document.createElement("tr");
+    // create the left column cell
+    var leftCell = document.createElement("td");
+    // generate text for the left column
+    var leftCellText = document.createTextNode(key);
+    // append text into the left column cell
+    leftCell.appendChild(leftCellText);
+    // append the left cell to the row
+    row.appendChild(leftCell);
+    // do the same for the right column
+    var rightCell = document.createElement("td");
+    var rightCellText = document.createTextNode(value);
+    rightCell.appendChild(rightCellText);
+    row.appendChild(rightCell);
+    // append the row to the <tbody>
+    tblBody.appendChild(row);
+
+  }
+  // append the <tbody> into the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
+
 }
 
-
-
+//
+//
+//
+// ------------------------------------------------
+// Income Distribution Calculation Below
+// ------------------------------------------------
+//
+//
+//
 function incomeDistribution() {
   var income = Number($("#income").val());
   // var income = Number(document.querySelector("#income").value);
@@ -150,13 +266,51 @@ function incomeDistribution() {
     }
   }
 
-  var fe = income * 0.65;
-  var de = income * 0.2;
-  var sm = income * 0.1;
-  var spl = income * 0.025;
+  var dictIncomeDistribution = {
+    "Mojo": "$ " + mojo.toFixed(2),
+    "Parents' Gift": "$ " + parents.toFixed(2),
+    "Shares": "$ " + shares.toFixed(2),
+    "Fire Extinguisher": "$ " + (income * 0.65).toFixed(2),
+    "Daily Expenses": "$ " + (income * 0.2).toFixed(2),
+    "Smile": "$ " + (income * 0.1).toFixed(2),
+    "Splurge": "$ " + (income * 0.025).toFixed(2)
+  };
 
-  var categoriesText = "Mojo:\nParents' Gift:\nShares:\nFire Extinguisher:\nDaily Expenses:\nSmile:\nSplurge:"
-  var output = "$" + mojo.toFixed(2) + "\n$" + parents.toFixed(2) + "\n$" + shares.toFixed(2) + "\n$" + fe.toFixed(2) + "\n$" + de.toFixed(2) + "\n$" + sm.toFixed(2) + "\n$" + spl.toFixed(2);
-  document.querySelector("#calculatorOutputCategories").innerText = categoriesText;
-  document.querySelector("#calculatorOutput").innerText = output;
+  // Create a table to display the output
+
+  // get the reference for the body
+  var body = document.querySelector(".incomeOutputTableDiv");
+
+  // creates a <table> element and a <tbody> element
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+  // iterate through the dictPaed object
+  for (var key in dictIncomeDistribution) {
+    var value = dictIncomeDistribution[key];
+
+    // create a row
+    var row = document.createElement("tr");
+    // create the left column cell
+    var leftCell = document.createElement("td");
+    // generate text for the left column
+    var leftCellText = document.createTextNode(key);
+    // append text into the left column cell
+    leftCell.appendChild(leftCellText);
+    // append the left cell to the row
+    row.appendChild(leftCell);
+    // do the same for the right column
+    var rightCell = document.createElement("td");
+    var rightCellText = document.createTextNode(value);
+    rightCell.appendChild(rightCellText);
+    row.appendChild(rightCell);
+    // append the row to the <tbody>
+    tblBody.appendChild(row);
+
+  }
+  // append the <tbody> into the <table>
+  tbl.appendChild(tblBody);
+  // appends <table> into <body>
+  body.appendChild(tbl);
+
 }

@@ -12,13 +12,20 @@ p, li{
   text-justify: inter-word;
 }
 
+td{
+  font-size: 1.2rem;
+}
+
+.smallFont{
+  font-size: 1rem;
+}
+
 .container-fluid{
   padding: 0;
 }
 
 .accordionButton{
   text-align: center;
-
 }
 
 /* Navbar styles */
@@ -30,7 +37,7 @@ p, li{
   padding-left: 20px;
 }
 
-/* Title String styless */
+/* Title String styles */
 .titleText{
   text-align: center;
 }
@@ -41,6 +48,10 @@ p, li{
 
 .inputItem{
   padding: 5px 10%;
+}
+
+.mediumFont{
+  font-size: 1.2rem;
 }
 
 /* Input/Output Columns styles */
@@ -73,6 +84,9 @@ table{
 }
 
 /* Reference Footer styles */
+.aboveFooter{
+  padding-block-end: 100px;
+}
 .refFooter{
   position: fixed;
   bottom: 0;

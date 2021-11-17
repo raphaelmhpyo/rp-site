@@ -81,46 +81,28 @@
       <div class="row">
         <div class="col-md-6 inputSection bodyDiv">
           <div class="container-fluid">
-            <input class="inputItem inputBox" type="number" name="incomeInput" min="0" required placeholder="Enter income" id="income">
+            <input class="inputItem inputBox mediumFont" type="number" name="incomeInput" min="0" required placeholder="Enter income" id="income">
           </div>
           <div class="container-fluid">
-            <!-- workout a way to get these checkboxes on separate lines -->
             <div class="inputItem">
               <input type="checkbox" name="mojoCheck" id="mojo" checked>
               <label for="mojo">Include Mojo?</label>
-
             </div>
             <div class="inputItem">
               <input type="checkbox" name="parentsCheck" id="parents" checked>
               <label for="parents">Include parents' gift fund?</label>
-
             </div>
             <div class="inputItem">
               <input type="checkbox" name="sharesCheck" id="shares" checked>
               <label for="shares">Include shares fund?</label>
-
             </div>
-
           </div>
           <div class="container-fluid">
             <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="incomeDistribution()">Calculate</button>
           </div>
-
         </div>
-
-        <div class="col-md-6 outputSection bodyDiv">
+        <div class="col-md-6 outputSection bodyDiv incomeOutputTableDiv">
           <h3 class="titleText">Calculator output:</h3>
-          <table>
-            <tr>
-              <td class="outputTableColumn">
-                <p id="calculatorOutputCategories"></p>
-              </td>
-              <td class="outputTableColumn">
-                <p id="calculatorOutput"></p>
-              </td>
-            </tr>
-          </table>
-
         </div>
       </div>
     </div>
