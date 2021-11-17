@@ -69,8 +69,6 @@
 
 <!--
 Tasks to do:
-- Find Bootstrap input form that works well for height, weight, LA, concentration
-- Clear form button
 - Output will be the total volume in big letters, with relevant formula
  -->
 
@@ -82,10 +80,21 @@ Tasks to do:
         <div class="container-fluid">
           <input class="inputItem inputBox" type="number" name="heightInput" min="0" required placeholder="Enter height (m)" id="heightEntered">
           <input class="inputItem inputBox" type="number" name="weightInput" min="0" required placeholder="Enter weight (kg)" id="weightEntered">
+		  <label for="localChoice">Select Local Anaesthetic:</label>
+		<select id="localChoice" class="inputBox" name="localChoice">
+		  <option value="ropivacaine">Ropivacaine</option>
+		  <option value="bupivacaine">Bupivacaine</option>
+		  <option value="levobupivacaine">Levobupivacaine</option>
+		  <option value="lidocaineNeat">Lidocaine (without Adrenaline)</option>
+		  <option value="lidocaineAdr">Lidocaine (with Adrenaline)</option>
+		</select>
+		<input class="inputItem inputBox" type="number" name="localConcentration" min="0" required placeholder="Enter concentration (%)" id="localConcentrationEntered">
+				  
 
         </div>
         <div class="container-fluid">
           <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="localAnaesCalculation()">Calculate</button>
+		  <button type="button" class="btn btn-dark calcButton" name="reset" onclick="localAnaesReset()">Reset</button>
         </div>
       </div>
       <div class="col-md-6 outputSection bodyDiv">
