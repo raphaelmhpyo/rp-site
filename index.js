@@ -55,7 +55,7 @@ function localAnaesCalculation(){
 			break;
 		}
 var stringOutput = "Chosen LA: " + localChosen + ", Concenration: " + concChosen + "%, Body Weight: " + finalBodyWeight +"kg, Final Volume: "+ finalVolume + "%"
-	alert("Calculation. " + stringOutput);
+	alert("Calculation. String Output. " + stringOutput);
 	$("#laCalculatorOutput").text(stringOutput);
 }
 
