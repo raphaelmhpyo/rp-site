@@ -31,17 +31,23 @@ function localAnaesCalculation(){
 	switch(localChosen) {
 		case "ropivacaine":
 			finalVolume = ropi/(concChosen * 10);
+			break;
 		case "bupivacaine":
 			finalVolume = bupi/(concChosen * 10);
+			break;
 		case "levobupivacaine":
 			finalVolume = levo/(concChosen * 10);
+			break;
 		case "lidocaineNeat":
 			finalVolume = lidoNeat/(concChosen * 10);
+			break;
 		case "lidocaineAdr":
 			finalVolume = lidoAdr/(concChosen * 10);
+			break;
 		default:
 			alert("Default action on switch statement");
 			console.log(localChosen + concChosen);
+			break;
 		}
 
 	alert("Calculation");
