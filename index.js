@@ -1,7 +1,9 @@
 function localAnaesCalculation(){
 
-// // Todo:
-// // - Display output as total volume + relevant weight and forumula used
+// Todo:
+// - Add function to "Reset" button - clear input fields
+// - Once sex selector placed, link it up to work with LBW calculation
+// - Add code for output sections
 
  	var height = Number($("#heightEntered").val());
  	var totalBodyWeight = Number($("#weightEntered").val());
@@ -54,7 +56,7 @@ function localAnaesCalculation(){
 			console.log(localChosen + concChosen);
 			break;
 		}
-var stringOutput = "Chosen LA: " + localChosen + ", Concentration: " + concChosen + "%, Body Weight: " + finalBodyWeight +"kg, Final Volume: "+ finalVolume + "mL"
+	var stringOutput = "Chosen LA: " + localChosen + ", Concentration: " + concChosen + "%, Body Weight: " + finalBodyWeight +"kg, Final Volume: "+ finalVolume + "mL"
 	$("#laCalculatorClassOutput").text("LA choice / Concentration / Body Weight / Final Volume");
 	$("#laCalculatorOutput").text(stringOutput);
 }
