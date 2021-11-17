@@ -73,7 +73,6 @@ function localAnaesCalculation() {
       break;
   }
 
-
   var dictLA = {
     "Local Anaesthetic": localName,
     "Concentration": concChosen + " %",
@@ -82,43 +81,18 @@ function localAnaesCalculation() {
   };
 
   // Create a table to display the output
+  generateTable(".laCalcOutput", dictLA);
 
-  // get the reference for the body
-  var body = document.querySelector(".laCalcOutput");
-
-  // creates a <table> element and a <tbody> element
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
-
-  // iterate through the dictPaed object
-  for (var key in dictLA) {
-    var value = dictLA[key];
-
-    // create a row
-    var row = document.createElement("tr");
-    // create the left column cell
-    var leftCell = document.createElement("td");
-    // generate text for the left column
-    var leftCellText = document.createTextNode(key);
-    // append text into the left column cell
-    leftCell.appendChild(leftCellText);
-    // append the left cell to the row
-    row.appendChild(leftCell);
-    // do the same for the right column
-    var rightCell = document.createElement("td");
-    var rightCellText = document.createTextNode(value);
-    rightCell.appendChild(rightCellText);
-    row.appendChild(rightCell);
-    // append the row to the <tbody>
-    tblBody.appendChild(row);
-
-  }
-  // append the <tbody> into the <table>
-  tbl.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tbl);
 }
-
+//
+//
+//
+// ------------------------------------------------
+// Page Reset Below
+// ------------------------------------------------
+//
+//
+//
 function localAnaesReset() {
   location.reload();
 }
@@ -163,7 +137,7 @@ function paedCalculation() {
     "Weight": (weight) + " kg (" + wtCategory + ")",
     "......": "......",
     "sBP": (80 + age * 2) + " mmHg",
-    "Shock": (weight * 4) + " J",
+    "DC Shock": (weight * 4) + " J",
     "Atropine": (weight * 20) + " mcg",
     "Adrenaline": (weight * 10) + " mcg",
     "Amiodarone": (weight * 5) + " mg",
@@ -181,45 +155,15 @@ function paedCalculation() {
     "Dexamethasone": ((weight * 0.15).toFixed(1)) + " mg",
     "Paracetamol": (weight * 15) + " mg",
     "Ibuprofen": (weight * 10) + " mg",
-    "Ketorolac": (weight * 2) + " mg"
+    "Ketorolac": (weight * 2) + " mg",
+    "......      ": "...... ",
+    "Crystalloid (for shock)": (weight * 20) + " mL",
+    "pRBC (for 10g/L)": (weight * 4) + " mL"
+
   };
 
   // Create a table to display the output
-
-  // get the reference for the body
-  var body = document.querySelector(".paedCalcTableDiv");
-
-  // creates a <table> element and a <tbody> element
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
-
-  // iterate through the dictPaed object
-  for (var key in dictPaed) {
-    var value = dictPaed[key];
-
-    // create a row
-    var row = document.createElement("tr");
-    // create the left column cell
-    var leftCell = document.createElement("td");
-    // generate text for the left column
-    var leftCellText = document.createTextNode(key);
-    // append text into the left column cell
-    leftCell.appendChild(leftCellText);
-    // append the left cell to the row
-    row.appendChild(leftCell);
-    // do the same for the right column
-    var rightCell = document.createElement("td");
-    var rightCellText = document.createTextNode(value);
-    rightCell.appendChild(rightCellText);
-    row.appendChild(rightCell);
-    // append the row to the <tbody>
-    tblBody.appendChild(row);
-
-  }
-  // append the <tbody> into the <table>
-  tbl.appendChild(tblBody);
-  // appends <table> into <body>
-  body.appendChild(tbl);
+  generateTable(".paedCalcTableDiv",dictPaed);
 
 }
 
@@ -277,17 +221,29 @@ function incomeDistribution() {
   };
 
   // Create a table to display the output
+  generateTable(".incomeOutputTableDiv", dictIncomeDistribution);
 
+}
+//
+//
+//
+// ------------------------------------------------
+// Output Table Generator Below
+// ------------------------------------------------
+//
+//
+//
+function generateTable(selector, dict){
   // get the reference for the body
-  var body = document.querySelector(".incomeOutputTableDiv");
+  var body = document.querySelector(selector);
 
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
   var tblBody = document.createElement("tbody");
 
   // iterate through the dictPaed object
-  for (var key in dictIncomeDistribution) {
-    var value = dictIncomeDistribution[key];
+  for (var key in dict) {
+    var value = dict[key];
 
     // create a row
     var row = document.createElement("tr");
@@ -312,5 +268,4 @@ function incomeDistribution() {
   tbl.appendChild(tblBody);
   // appends <table> into <body>
   body.appendChild(tbl);
-
 }

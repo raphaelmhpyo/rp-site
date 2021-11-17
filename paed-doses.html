@@ -77,8 +77,8 @@
       <div class="row">
         <div class="col-md-6 inputSection bodyDiv">
           <div class="container-fluid">
-            <input class="inputItem inputBox" type="number" name="ageInput" min="0" required placeholder="Enter age (years)" id="ageEntered">
-            <input class="inputItem inputBox" type="number" name="weightInput" min="0" required placeholder="Enter weight (kg)" id="weightEntered">
+            <input class="inputItem inputBox mediumFont" type="number" name="ageInput" min="0" required placeholder="Enter age (years)" id="ageEntered">
+            <input class="inputItem inputBox mediumFont" type="number" name="weightInput" min="0" required placeholder="Enter weight (kg)" id="weightEntered">
           </div>
           <div class="container-fluid">
             <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="paedCalculation()">Calculate</button>
@@ -86,16 +86,6 @@
         </div>
         <div class="col-md-6 outputSection bodyDiv paedCalcTableDiv">
           <h3 class="titleText">Calculator output:</h3>
-          <!-- <table>
-            <tr>
-              <td class="outputTableColumn">
-                <p id="paedCalculatorOutputCategories"></p>
-              </td>
-              <td class="outputTableColumn">
-                <p id="paedCalculatorOutput"></p>
-              </td>
-            </tr>
-          </table> -->
         </div>
       </div>
     </div>
@@ -128,7 +118,7 @@
             <li class="smallFont">20-30kg: 2.5</li>
             <li class="smallFont">>30kg: 3.0</li>
           </ul>
-          Shock: 4J/kg
+          DC Shock: 4J/kg
           <br />Amiodarone: 5mg/kg
           <br />Adrenaline: 10mcg/kg
           <br />Atropine: 20mcg/kg
@@ -143,6 +133,8 @@
             <br />Paracetamol: 15mg/kg
             <br />Ibuprofen: 10mg/kg
             <br />Ketorolac: 2mg/kg
+            <br /><br />Crystalloid for shock: 20mL/kg
+            <br />pRBC to raise Hb by 10g/L: 4mL/kg
         </div>
       </div>
     </div>
