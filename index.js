@@ -93,7 +93,7 @@ function localAnaesCalculation() {
 //
 //
 //
-function localAnaesReset() {
+function resetPage() {
   location.reload();
 }
 //
