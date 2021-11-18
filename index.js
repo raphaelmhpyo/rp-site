@@ -19,7 +19,7 @@ function localAnaesCalculation() {
   var finalVolume = 0;
   var weightCategory = "TBW"
 
-  if (height === 0){
+  if (height === 0) {
     finalBodyWeight = totalBodyWeight;
   } else {
     if (BMI >= 30) {
@@ -44,6 +44,7 @@ function localAnaesCalculation() {
   var levo = Math.round(2.5 * finalBodyWeight);
   var lidoNeat = Math.round(3 * finalBodyWeight);
   var lidoAdr = Math.round(7 * finalBodyWeight);
+  var lidoAirway = Math.round(8 * finalBodyWeight);
   var localName = ""
 
   switch (localChosen) {
@@ -66,6 +67,10 @@ function localAnaesCalculation() {
     case "lidocaineAdr":
       finalVolume = lidoAdr / (concChosen * 10);
       localName = "Lidocaine (with adrenaline)";
+      break;
+    case "lidocaineAirway":
+      finalVolume = lidoAirway / (concChosen * 10);
+      localName = "Lidocaine (for airway)";
       break;
     default:
       alert("Default action on switch statement");
@@ -163,7 +168,7 @@ function paedCalculation() {
   };
 
   // Create a table to display the output
-  generateTable(".paedCalcTableDiv",dictPaed);
+  generateTable(".paedCalcTableDiv", dictPaed);
 
 }
 
@@ -233,12 +238,23 @@ function incomeDistribution() {
 //
 //
 //
-function generateTable(selector, dict){
+function generateTable(selector, dict) {
   // get the reference for the body
   var body = document.querySelector(selector);
 
+// Check if element with generatedTable class exists
+// If exists -> remove createElement first
+// Then carry on with the rest of the function
+
+
+
+  if (document.querySelectorAll(".generatedTable").length != 0){
+    document.querySelectorAll(".generatedTable")[0].remove();
+  }
+
   // creates a <table> element and a <tbody> element
   var tbl = document.createElement("table");
+  tbl.classList.add("generatedTable");
   var tblBody = document.createElement("tbody");
 
   // iterate through the dictPaed object
