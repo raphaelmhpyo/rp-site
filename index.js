@@ -45,32 +45,38 @@ function localAnaesCalculation() {
   var lidoNeat = Math.round(3 * finalBodyWeight);
   var lidoAdr = Math.round(7 * finalBodyWeight);
   var lidoAirway = Math.round(8 * finalBodyWeight);
-  var localName = ""
+  // var localName = "";
 
   switch (localChosen) {
     case "ropivacaine":
       finalVolume = ropi / (concChosen * 10);
-      localName = "Ropivacaine";
+      var localName = "Ropivacaine";
+      var maxDose = ropi;
       break;
     case "bupivacaine":
       finalVolume = bupi / (concChosen * 10);
       localName = "Bupivacaine";
+      maxDose = bupi;
       break;
     case "levobupivacaine":
       finalVolume = levo / (concChosen * 10);
       localName = "Levobupivacaine";
+      maxDose = levo;
       break;
     case "lidocaineNeat":
       finalVolume = lidoNeat / (concChosen * 10);
       localName = "Lidocaine (without adrenaline)";
+      maxDose = lidoNeat;
       break;
     case "lidocaineAdr":
       finalVolume = lidoAdr / (concChosen * 10);
       localName = "Lidocaine (with adrenaline)";
+      maxDose = lidoAdr;
       break;
     case "lidocaineAirway":
       finalVolume = lidoAirway / (concChosen * 10);
       localName = "Lidocaine (for airway)";
+      maxDose = lidoAirway;
       break;
     default:
       alert("Default action on switch statement");
@@ -82,6 +88,7 @@ function localAnaesCalculation() {
     "Local Anaesthetic": localName,
     "Concentration": concChosen + " %",
     "Weight": finalBodyWeight + " kg (" + weightCategory + ")",
+    "Max Dose": maxDose + " mg",
     "Max Volume": finalVolume + " mL"
   };
 
@@ -89,18 +96,7 @@ function localAnaesCalculation() {
   generateTable(".laCalcOutput", dictLA);
 
 }
-//
-//
-//
-// ------------------------------------------------
-// Page Reset Below
-// ------------------------------------------------
-//
-//
-//
-function resetPage() {
-  location.reload();
-}
+
 //
 //
 //
@@ -119,10 +115,10 @@ function paedCalculation() {
   var wtCalc = (age + 4) * 2;
   if (wtEntered === 0) {
     var weight = wtCalc;
-    var wtCategory = "Estimated"
+    var wtCategory = "Estimated";
   } else {
     weight = wtEntered;
-    wtCategory = "Actual"
+    wtCategory = "Actual";
   }
   // LMA sizing algorithm
   if (weight < 5) {
@@ -139,7 +135,7 @@ function paedCalculation() {
 
   var dictPaed = {
     "Age": (age) + " years",
-    "Weight": (weight) + " kg (" + wtCategory + ")",
+    "Weight": (weight) + " kg [" + wtCategory + "]",
     "......": "......",
     "sBP": (80 + age * 2) + " mmHg",
     "DC Shock": (weight * 4) + " J",
@@ -147,13 +143,13 @@ function paedCalculation() {
     "Adrenaline": (weight * 10) + " mcg",
     "Amiodarone": (weight * 5) + " mg",
     "......     ": "......        ",
-    "ETT - Uncuffed": (age / 4) + 4,
-    "ETT Depth - Oral": ((age / 2) + 12) + " cm",
+    "ETT [Uncuffed]": (age / 4) + 4,
+    "ETT Depth [Oral]": ((age / 2) + 12) + " cm",
     "LMA": lma,
     "......  ": "......  ",
-    "Fentanyl": (weight * 2) + " mcg",
-    "Propofol": (weight * 4) + " mg",
-    "Suxamethonium IV": (weight * 2) + " mg",
+    "Fentanyl [1-2mcg/kg]": weight + " mcg - " + (weight * 2) + " mcg",
+    "Propofol [4-6mcg/kg]": (weight * 4) + " mg - " + (weight * 6) + " mg",
+    "Suxamethonium": (weight * 2) + " mg [IV] / " + (weight * 4) + " mg [IM]",
     "...... ": "...... ",
     "Cefazolin": (weight * 50) + " mg",
     "Ondansetron": ((weight * 0.15).toFixed(1)) + " mg",
@@ -162,8 +158,8 @@ function paedCalculation() {
     "Ibuprofen": (weight * 10) + " mg",
     "Ketorolac": (weight * 2) + " mg",
     "......      ": "...... ",
-    "Crystalloid (for shock)": (weight * 20) + " mL",
-    "pRBC (for 10g/L)": (weight * 4) + " mL"
+    "Crystalloid [20mL/kg]": (weight * 20) + " mL",
+    "pRBC [for 10g/L]": (weight * 4) + " mL"
 
   };
 
@@ -171,7 +167,6 @@ function paedCalculation() {
   generateTable(".paedCalcTableDiv", dictPaed);
 
 }
-
 //
 //
 //
@@ -239,25 +234,20 @@ function incomeDistribution() {
 //
 //
 function generateTable(selector, dict) {
-  // get the reference for the body
+  // Get the reference for the body
   var body = document.querySelector(selector);
 
-// Check if element with generatedTable class exists
-// If exists -> remove createElement first
-// Then carry on with the rest of the function
-
-
-
-  if (document.querySelectorAll(".generatedTable").length != 0){
+  // Check if element with class "generatedTable" exists -> If so, remove that element before carrying on
+  if (document.querySelectorAll(".generatedTable").length != 0) {
     document.querySelectorAll(".generatedTable")[0].remove();
   }
 
-  // creates a <table> element and a <tbody> element
+  // Creates a <table> element with class "generatedTable" and a <tbody> element
   var tbl = document.createElement("table");
   tbl.classList.add("generatedTable");
   var tblBody = document.createElement("tbody");
 
-  // iterate through the dictPaed object
+  // Iterate through the dictPaed object
   for (var key in dict) {
     var value = dict[key];
 
@@ -284,4 +274,16 @@ function generateTable(selector, dict) {
   tbl.appendChild(tblBody);
   // appends <table> into <body>
   body.appendChild(tbl);
+}
+//
+//
+//
+// ------------------------------------------------
+// Page Reset Below
+// ------------------------------------------------
+//
+//
+//
+function resetPage() {
+  location.reload();
 }
