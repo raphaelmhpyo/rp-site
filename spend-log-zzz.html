@@ -83,15 +83,19 @@
             <td><label>Spend details</label></td>
             <td><textarea class="contactInput" name="spendDetails" rows="3" cols="30"></textarea></td>
           </tr>
+          <tr>
+            <td></td>
+            <td><input class="contactInput" type="date" name="spendDate" id="spendDate" value=""></td>
+          </tr>
         </table>
-
         <div class="container-fluid">
           <button type="button submit" class="btn btn-dark calcButton">Submit details</button>
+          <button type="button" class="btn btn-dark calcButton" name="reset" onclick="resetPage()">Reset</button>
         </div>
-
-        <!-- <input type="submit" name="" value="Submit"> -->
       </form>
 
     </div>
+    <script src="todayDate.js" charset="utf-8"></script>
+    <script src="index.js" charset="utf-8"></script>
   </body>
 </html>
