@@ -67,6 +67,11 @@ table{
   width: 100%;
 }
 
+.hiddenText{
+  visibility: hidden;
+  font-size: 0.1rem;
+}
+
 /* Input Section styles */
 .calcButton{
   width: 100%;

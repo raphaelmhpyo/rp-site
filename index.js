@@ -287,3 +287,9 @@ function generateTable(selector, dict) {
 function resetPage() {
   location.reload();
 }
+
+function buttonClick(){
+  var hiddenText = document.querySelector(".hiddenText");
+  hiddenText.value = Date.now();
+  location.reload();
+}
