@@ -182,6 +182,12 @@ function incomeDistribution() {
   var mojo = 0;
   var parents = 0;
   var shares = 0;
+  var tax = 0;
+
+  if ($("#pretax").is(":checked")) {
+    tax = income/2;
+    income = income/2;
+  }
 
   if ($("#mojo").is(":checked")) {
     if (income > 100) {
@@ -211,6 +217,7 @@ function incomeDistribution() {
   }
 
   var dictIncomeDistribution = {
+    "Tax": "$ " + tax.toFixed(2),
     "Mojo": "$ " + mojo.toFixed(2),
     "Parents' Gift": "$ " + parents.toFixed(2),
     "Shares": "$ " + shares.toFixed(2),
