@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>SAINT & SPIRE Income Distribution Tool</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- CSS -->
+  <style media="screen">
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .titleText {
+      text-align: center;
+    }
+
+    .accordionButton{
+      text-align: center;
+    }
+
+    .col-md-6.bodyDiv{
+      padding: 10px 10%;
+    }
+
+    .outputTableColumn{
+      padding: 0 5%;
+    }
+
+    table{
+      width: 100%;
+    }
+
+    .hiddenText{
+      visibility: hidden;
+      font-size: 0.1rem;
+    }
+
+    /* Input Section styles */
+    .calcButton{
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    .inputBox{
+      width: 100%;
+      margin: 5px 0 10px 0;
+      padding: 0 0 0 10px;
+    }
+
+    .contactInput{
+      width:100%;
+    }
+
+    /* Reference Footer styles */
+    .aboveFooter{
+      padding-block-end: 100px;
+    }
+    .refFooter{
+      position: fixed;
+      bottom: 0;
+    }
+    .card-body{
+      font-size:0.8rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+
+    <div>
+
+      <h1 class="bodyDiv titleText">SAINT & SPIRE Income Distribution Tool</h1>
+
+      <div class="row">
+        <div class="col-md-6 inputSection bodyDiv">
+          <div class="container-fluid">
+            <input class="inputItem inputBox mediumFont" type="number" name="incomeInput" min="0" required placeholder="Enter income" id="income">
+          </div>
+          <div class="container-fluid">
+            <div class="inputItem">
+              <input type="checkbox" name="pretaxCheck" id="pretax" checked>
+              <label for="pretax">Is your income pre-tax?</label>
+            </div>
+            <div class="inputItem">
+              <input type="checkbox" name="mojoCheck" id="mojo" checked>
+              <label for="mojo">Include Mojo?</label>
+            </div>
+            <div class="inputItem">
+              <input type="checkbox" name="sharesCheck" id="shares" checked>
+              <label for="shares">Include Investment fund?</label>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <button type="button" class="btn btn-dark calcButton" name="calculate" onclick="incomeDistribution()">Calculate</button>
+          </div>
+        </div>
+        <div class="col-md-6 outputSection bodyDiv incomeOutputTableDiv">
+          <h3 class="titleText">Calculator output:</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    function incomeDistribution() {
+      var income = Number($("#income").val());
+      // var income = Number(document.querySelector("#income").value);
+      var mojo = 0;
+      var shares = 0;
+      var tax = 0;
+
+      if ($("#pretax").is(":checked")) {
+        tax = income/2;
+        income = income/2;
+      }
+
+      if ($("#mojo").is(":checked")) {
+        if (income > 100) {
+          income -= 100;
+          mojo = 100;
+        } else {
+          alert("Insufficient funds - Mojo");
+        }
+      }
+
+      if ($("#shares").is(":checked")) {
+        if (income > 500) {
+          income -= 500;
+          shares = 500;
+        } else {
+          alert("Insufficient funds - Shares");
+        }
+      }
+
+      var dictIncomeDistribution = {
+        "Tax": "$ " + tax.toFixed(2),
+        "Mojo": "$ " + mojo.toFixed(2),
+        "Investment": "$ " + shares.toFixed(2),
+        "Fire Extinguisher": "$ " + (income * 0.2).toFixed(2),
+        "Daily Expenses": "$ " + (income * 0.6).toFixed(2),
+        "Smile": "$ " + (income * 0.1).toFixed(2),
+        "Splurge": "$ " + (income * 0.1).toFixed(2)
+      };
+
+      // Create a table to display the output
+      generateTable(".incomeOutputTableDiv", dictIncomeDistribution);
+
+    }
+
+    function generateTable(selector, dict) {
+      // Get the reference for the body
+      var body = document.querySelector(selector);
+
+      // Check if element with class "generatedTable" exists -> If so, remove that element before carrying on
+      if (document.querySelectorAll(".generatedTable").length != 0) {
+        document.querySelectorAll(".generatedTable")[0].remove();
+      }
+
+      // Creates a <table> element with class "generatedTable" and a <tbody> element
+      var tbl = document.createElement("table");
+      tbl.classList.add("generatedTable");
+      var tblBody = document.createElement("tbody");
+
+      // Iterate through the dictPaed object
+      for (var key in dict) {
+        var value = dict[key];
+
+        // create a row
+        var row = document.createElement("tr");
+        // create the left column cell
+        var leftCell = document.createElement("td");
+        // generate text for the left column
+        var leftCellText = document.createTextNode(key);
+        // append text into the left column cell
+        leftCell.appendChild(leftCellText);
+        // append the left cell to the row
+        row.appendChild(leftCell);
+        // do the same for the right column
+        var rightCell = document.createElement("td");
+        var rightCellText = document.createTextNode(value);
+        rightCell.appendChild(rightCellText);
+        row.appendChild(rightCell);
+        // append the row to the <tbody>
+        tblBody.appendChild(row);
+
+      }
+      // append the <tbody> into the <table>
+      tbl.appendChild(tblBody);
+      // appends <table> into <body>
+      body.appendChild(tbl);
+    }
+
+
+  </script>
+</body>
+<footer>
+<!-- Reference section  -->
+  <div class="accordion container-fluid refFooter" id="accordionBareFootReference">
+    <div class="card">
+      <div class="card-header" id="BareFootReference">
+        <h2 class="mb-0 accordionButton">
+          <button class="btn btn-link btn-small collapsed" type="button" data-toggle="collapse" data-target="#collapseBareFootReference" aria-expanded="false" aria-controls="collapseBareFootReference">
+            Explanation
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseBareFootReference" class="collapse" aria-labelledby="BareFootReference" data-parent="#accordionBareFootReference">
+        <div class="card-body bodyDiv">
+          <p>
+            This is adapted from <a href="https://www.barefootinvestor.com/">The Barefoot Investor</a> by Scott Pape.
+          </p>
+          <p>
+            The idea is that your income should be automatically divided into different allocations to account for expenses, savings and investment for your future.
+          </p>
+          <h5>Tax (50%)</h5>
+          <p>
+            For pre-tax income, allocate 50% of the income for income tax, GST and tax-related costs.
+          </p>
+          <h5>Mojo ($100)</h5>
+          <p>
+            UBank requires a minimum monthly deposit of $100 to access special interest rate. "Mojo" is an emergency fund, sufficient to cover three months' worth of expenses if you are unable to make money for any reason.
+          </p>
+          <h5>Investment ($500)</h5>
+          <p>
+            This is for building your investment portfolio, crucial for creating your wealth.
+          </p>
+          <h5>Fire Extinguisher (20%)</h5>
+          <p>
+            After above deductions, 20% of the remaining funds will be allocated to repaying your immediate debts. Once all debts have been paid off, this will be allocated to completing your Mojo fund. Once the Mojo fund is complete, then this will be allocated to your investment.
+          </p>
+          <h5>Daily Expenses (60%)</h5>
+          <p>
+            For daily expenses, including rent. REDUCE your expenses if necessary, rather than overdrawing from other funds.
+          </p>
+          <h5>Smile (10%)</h5>
+          <p>
+            "Long-term" savings for your personal enjoyment. Eg. A new car or a holiday.
+          </p>
+          <h5>Splurge (10%)</h5>
+          <p>
+            "Immediate term" funds for your personal enjoyment. Eg. Entertainment and luxury dining. Once depleted, you MUST wait until your next pay day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>
