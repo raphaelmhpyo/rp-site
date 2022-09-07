@@ -77,6 +77,22 @@
     h5{
       font-size: 120%;
     }
+    .card-header{
+      height:40px;
+      background-color: ghostwhite;
+    }
+    .btn-small{
+      font-size:0.75rem;
+      color: black;
+      padding: 0;
+    }
+    .btn-check:focus, .btn, .btn:focus{
+      outline:0;
+      box-shadow: 0 0 0 0;
+    }
+    .btn-link:hover{
+      color: black;
+    }
 
   </style>
 </head>
@@ -86,7 +102,7 @@
 
     <div>
 
-      <h1 class="bodyDiv titleText">SAINT & SPIRE Income Distribution Tool</h1>
+      <h1 class="bodyDiv titleText">SAINT & SPIRE<br> Income Distribution Tool</h1>
 
       <div class="row">
         <div class="col-md-6 inputSection bodyDiv">
@@ -134,9 +150,9 @@
       }
 
       if ($("#mojo").is(":checked")) {
-        if (income > 100) {
-          income -= 100;
-          mojo = 100;
+        if (income > 200) {
+          income -= 200;
+          mojo = 200;
         } else {
           alert("Insufficient funds - Mojo");
         }
@@ -218,11 +234,11 @@
   <div class="accordion container-fluid refFooter" id="accordionBareFootReference">
     <div class="card">
       <div class="card-header" id="BareFootReference">
-        <h2 class="mb-0 accordionButton">
+        <h5 class="mb-0 accordionButton">
           <button class="btn btn-link btn-small collapsed" type="button" data-toggle="collapse" data-target="#collapseBareFootReference" aria-expanded="false" aria-controls="collapseBareFootReference">
-            Explanation
+            Reference
           </button>
-        </h2>
+        </h5>
       </div>
 
       <div id="collapseBareFootReference" class="collapse" aria-labelledby="BareFootReference" data-parent="#accordionBareFootReference">
@@ -234,7 +250,7 @@
           <p>
             For income tax, GST and tax-related costs
           </p>
-          <h5>Mojo ($100)</h5>
+          <h5>Mojo ($200)</h5>
           <p>
             Minimum monthly deposit to access special interest rate
             "Mojo" is an emergency fund, sufficient to cover living cost for 3 months while awaiting income protection payment
