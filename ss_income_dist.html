@@ -4,7 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <title>SAINT & SPIRE Income Distribution Tool</title>
+  <title>SAINT & SPIRE Income Distribution Calculator</title>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,16 @@
   <style media="screen">
     body {
       font-family: 'Open Sans', sans-serif;
+    }
+
+    .logo_box{
+      position: relative;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+    .ssLogo{
+      width: 50%;
     }
 
     .titleText {
@@ -107,7 +117,10 @@
   <div class="container-fluid">
 
     <div>
-      <h1 class="bodyDiv titleText">SAINT & SPIRE<br> Income Distribution Tool</h1>
+      <div class="logo_box">
+        <img src="ss_logo.jpg" class="ssLogo" alt="saintandspire">
+        <h2 class="bodyDiv titleText">Income Distribution Calculator</h2>
+      </div>
 
       <div class="row">
         <div class="col-md-6 inputSection bodyDiv">
@@ -159,7 +172,7 @@
           income -= 200;
           mojo = 200;
         } else {
-          alert("Insufficient funds - Mojo");
+          alert("Insufficient funds - Emergency");
         }
       }
 
@@ -168,7 +181,7 @@
           income -= 500;
           shares = 500;
         } else {
-          alert("Insufficient funds - Shares");
+          alert("Insufficient funds - Investment");
         }
       }
 
@@ -265,8 +278,8 @@
           <p>
             20% of the remaining funds<br>
             For repaying immediate debts<br>
-            Once all debts have been paid off, allocate to Mojo fund<br>
-            Once Mojo fund complete, allocated to investment
+            Once all debts have been paid off, allocate to Emergency Stream<br>
+            Once Emergency Stream complete, allocated to Investment Stream
           </p>
           <h5>Daily Expenses (60%)</h5>
           <p>
