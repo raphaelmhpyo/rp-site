@@ -244,8 +244,8 @@ function incomeDistribution() {
 
 function bodyWeightCalculation(){
     // Variables for entered inputs
-    var tbw = Number($("#tbwEntered").val());
-    var height = Number($("#htEntered").val());
+    var tbw = Number($("#weightEntered").val());
+    var height = Number($("#heightEntered").val());
     var sex = $("#sexCategory").val();
 
     // Calculated variables
