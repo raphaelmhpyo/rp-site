@@ -261,15 +261,18 @@ function bodyWeightCalculation(){
 
     // Output string
     var dictBodyWeight = {
-        "Total body weight": tbw.toFixed(1) + "kg",
-        "Ideal body weight": ibw.toFixed(1) + "kg",
-        "Lean body weight": lbw.toFixed(1) + "kg",
-        "Adjusted body weight": abw.toFixed(1) + "kg"
+        "Total body weight": tbw + "kg",
+        "Ideal body weight": ibw + "kg",
+        "Lean body weight": lbw + "kg",
+        "Adjusted body weight": abw + "kg"
     }
+
+    console.log(tbw, ibw, lbw, abw);
 
     generateTable(".bwOutputTableDiv", dictBodyWeight);
 
 }
+
 
 //
 //
