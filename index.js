@@ -260,7 +260,7 @@ function bodyWeightCalculation(){
 
     // Output string
     var dictBodyWeight = {
-        "BMI": bmi.toFixed(1),
+        "BMI": bmi.toFixed(0),
         "Total body weight": tbw + " kg",
         "Ideal body weight": ibw + " kg",
         "Lean body weight": lbw + " kg",
