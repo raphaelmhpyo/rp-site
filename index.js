@@ -241,7 +241,6 @@ function incomeDistribution() {
 //
 //
 //
-
 function bodyWeightCalculation(){
     // Variables for entered inputs
     var tbw = Number($("#weightEntered").val());
@@ -261,10 +260,11 @@ function bodyWeightCalculation(){
 
     // Output string
     var dictBodyWeight = {
-        "Total body weight": tbw + " kg",
-        "Ideal body weight": ibw + " kg",
-        "Lean body weight": lbw + " kg",
-        "Adjusted body weight": abw + " kg"
+        "BMI": bmi,
+        "Total body weight": tbw + "kg",
+        "Ideal body weight": ibw + "kg",
+        "Lean body weight": lbw + "kg",
+        "Adjusted body weight": abw + "kg"
     }
 
     console.log(tbw, ibw, lbw, abw);
@@ -272,8 +272,6 @@ function bodyWeightCalculation(){
     generateTable(".bwOutputTableDiv", dictBodyWeight);
 
 }
-
-
 //
 //
 //
