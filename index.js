@@ -261,10 +261,10 @@ function bodyWeightCalculation(){
     // Output string
     var dictBodyWeight = {
         "BMI": bmi,
-        "Total body weight": tbw + "kg",
-        "Ideal body weight": ibw + "kg",
-        "Lean body weight": lbw + "kg",
-        "Adjusted body weight": abw + "kg"
+        "Total body weight": tbw + " kg",
+        "Ideal body weight": ibw + " kg",
+        "Lean body weight": lbw + " kg",
+        "Adjusted body weight": abw + " kg"
     }
 
     console.log(tbw, ibw, lbw, abw);
