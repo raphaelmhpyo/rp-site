@@ -231,6 +231,46 @@ function incomeDistribution() {
   generateTable(".incomeOutputTableDiv", dictIncomeDistribution);
 
 }
+
+//
+//
+//
+// ------------------------------------------------
+// Body weight calculator below
+// ------------------------------------------------
+//
+//
+//
+
+function bodyWeightCalculation(){
+    // Variables for entered inputs
+    var tbw = Number($("#tbwEntered").val());
+    var height = Number($("#htEntered").val());
+    var sex = $("#sexEntered").val();
+
+    // Calculated variables
+    var bmi = tbw / (height/100)**2;
+    if (sex === 'M'){
+        var ibw = height - 100;
+        var lbw = Math.round((9370 * tbw) / (6680 + (216 * bmi)));
+    } else {
+        var ibw = height - 105;
+        var lbw = Math.round((9270 * tbw) / (8780 + (224 * bmi)));
+    }
+    abw = ibw + 0.4*(tbw-ibw)
+
+    // Output string
+    var dictBodyWeight = {
+        "Total body weight": tbw.toFixed(0) + "kg",
+        "Ideal body weight": ibw.toFixed(0) + "kg",
+        "Lean body weight": lbw.toFixed(0) + "kg",
+        "Adjusted body weight": abw.toFixed(0) + "kg"
+    }
+
+    generateTable(".bwOutputTableDiv", dictBodyWeight);
+
+}
+
 //
 //
 //
