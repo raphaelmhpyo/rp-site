@@ -46,6 +46,10 @@ td{
   padding: 10px 20%;
 }
 
+.bodyDiv.directory{
+  padding: 10px 10%;
+}
+
 .inputItem{
   padding: 5px 10%;
 }
