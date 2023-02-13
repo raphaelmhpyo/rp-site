@@ -21,14 +21,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
   <link rel="manifest" href="favicon/site.webmanifest">
-<script>
-pw = prompt("Enter the name of EH-DOA secretary: ");
-if (pw!=="Zarine"){window.location.href="https://raphaelmhpyo.github.io/rp-site/Standalone/paed-doses.html"}
-</script>
 
 </head>
 
-<body>
+<body onload="auth()">
+
+<script>
+Function auth(){
+pw = prompt("Enter the name of EH-DOA secretary: ");
+if (pw!=="Zarine"){window.location.href="https://raphaelmhpyo.github.io/rp-site/Standalone/paed-doses.html"};
+}
+</script>
 
   <!-- Navbar code starts here-->
   <div class="container-fluid">
