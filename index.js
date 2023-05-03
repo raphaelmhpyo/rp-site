@@ -183,6 +183,7 @@ function incomeDistribution() {
   var parents = 0;
   var shares = 0;
   var tax = 0;
+  var loan = 0;
 
   if ($("#pretax").is(":checked")) {
     tax = income/2;
@@ -216,11 +217,28 @@ function incomeDistribution() {
     }
   }
 
+  if ($("#frtnt").is(":checked")) {
+    if (income > 8500) {
+      income -= 8500;
+      loan = 8500;
+    } else {
+      alert("Insufficient funds - Loan repayment");
+    }
+  } else {
+    if (income > 4250) {
+      income -= 4250;
+      loan = 4250;
+    } else {
+      alert("Insufficient funds - Loan repayment");
+    }
+  }
+
   var dictIncomeDistribution = {
     "Tax": "$ " + tax.toFixed(2),
     "Mojo": "$ " + mojo.toFixed(2),
     "Parents' Gift": "$ " + parents.toFixed(2),
     "Shares": "$ " + shares.toFixed(2),
+    "Loan Repayments": "$ " + loan.toFixed(2),
     "Fire Extinguisher": "$ " + (income * 0.65).toFixed(2),
     "Daily Expenses": "$ " + (income * 0.2).toFixed(2),
     "Smile": "$ " + (income * 0.1).toFixed(2),
