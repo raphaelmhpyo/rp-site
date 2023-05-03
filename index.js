@@ -218,19 +218,15 @@ function incomeDistribution() {
   }
 
   if ($("#frtnt").is(":checked")) {
-    if (income > 8500) {
-      income -= 8500;
-      loan = 8500;
-    } else {
-      alert("Insufficient funds - Loan repayment");
-    }
+    loan = 8500;
   } else {
-    if (income > 4250) {
-      income -= 4250;
-      loan = 4250;
-    } else {
-      alert("Insufficient funds - Loan repayment");
-    }
+    loan = 4250;
+  }
+  
+  if (income > loan) {
+    income -= loan;
+  } else {
+    alert("Insufficient funds - Loan repayment");
   }
 
   var dictIncomeDistribution = {
