@@ -226,7 +226,8 @@ function incomeDistribution() {
   if (income > loan) {
     income -= loan;
   } else {
-    alert("Insufficient funds - Loan repayment");
+    alert("Insufficient funds - Loan Repayment \n Distributing income without Loan Repayment");
+    loan = 0;
   }
 
   var dictIncomeDistribution = {
