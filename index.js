@@ -184,6 +184,7 @@ function incomeDistribution() {
   var shares = 0;
   var tax = 0;
   var loan = 0;
+  var car = 0;
 
   if ($("#pretax").is(":checked")) {
     tax = income/2;
@@ -217,6 +218,14 @@ function incomeDistribution() {
     }
   }
 
+  if ($("#car").is(":checked")) {
+    if (income > 3000) {
+      income -= 3000;
+      car = 3000;
+    } else {
+      alert("Insufficient funds - Car");
+    }
+  }
   if ($("#frtnt").is(":checked")) {
     loan = 8500;
   } else {
@@ -230,11 +239,15 @@ function incomeDistribution() {
     loan = 0;
   }
 
+  grand_total = mojo + 2*parents + shares + car + tax + loan + income
+  console.log("Grand total is " + grand_total)
+
   var dictIncomeDistribution = {
     "Tax": "$ " + tax.toFixed(2),
     "Mojo": "$ " + mojo.toFixed(2),
     "Parents' Gift": "$ " + parents.toFixed(2),
     "Shares": "$ " + shares.toFixed(2),
+    "Car": "$ " + car.toFixed(2),
     "Loan Repayments": "$ " + loan.toFixed(2),
     "Fire Extinguisher": "$ " + (income * 0.65).toFixed(2),
     "Daily Expenses": "$ " + (income * 0.2).toFixed(2),
