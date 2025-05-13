@@ -219,9 +219,9 @@ function incomeDistribution() {
   }
 
   if ($("#car").is(":checked")) {
-    if (income > 2400) {
-      income -= 2400;
-      car = 2400;
+    if (income > 4000) {
+      income -= 4000;
+      car = 4000;
     } else {
       alert("Insufficient funds - Car");
     }
