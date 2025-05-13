@@ -227,9 +227,9 @@ function incomeDistribution() {
     }
   }
   if ($("#frtnt").is(":checked")) {
-    loan = 8500;
+    loan = 7500;
   } else {
-    loan = 4250;
+    loan = 3750;
   }
   
   if (income > loan) {
