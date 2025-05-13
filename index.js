@@ -257,6 +257,10 @@ function incomeDistribution() {
 
   // Create a table to display the output
   generateTable(".incomeOutputTableDiv", dictIncomeDistribution);
+  const subject = "Income distribution log"
+  const entered_income = Number($("#income").val());
+  const body = entered_income + dictIncomeDistribution
+  window.open('mailto:rpyo.mnguyen@gmail.com?subject=subject&body=body');
 
 }
 
