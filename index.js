@@ -183,7 +183,7 @@ function incomeDistribution() {
   var parents = 0;
   var shares = 0;
   var tax = 0;
-  var loan = 0;
+  var loan = 6750;
   var car = 0;
   const annual_exp = 1300;
 
@@ -230,11 +230,11 @@ function incomeDistribution() {
       alert("Insufficient funds - Car");
     }
   }
-  if ($("#frtnt").is(":checked")) {
-    loan = 7500;
-  } else {
-    loan = 3750;
-  }
+  // if ($("#frtnt").is(":checked")) {
+  //   loan = 6750;
+  // } else {
+  //   loan = 3750;
+  // }
   
   if (income > loan) {
     income -= loan;
