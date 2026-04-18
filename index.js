@@ -183,7 +183,7 @@ function incomeDistribution() {
   var parents = 0;
   var shares = 0;
   var tax = 0;
-  var loan = 6750;
+  var loan = 10750;
   var car = 0;
   const annual_exp = 1300;
 
@@ -222,14 +222,14 @@ function incomeDistribution() {
     }
   }
 
-  if ($("#car").is(":checked")) {
-    if (income > 4000) {
-      income -= 4000;
-      car = 4000;
-    } else {
-      alert("Insufficient funds - Car");
-    }
-  }
+  // if ($("#car").is(":checked")) {
+  //   if (income > 4000) {
+  //     income -= 4000;
+  //     car = 4000;
+  //   } else {
+  //     alert("Insufficient funds - Car");
+  //   }
+  // }
   // if ($("#frtnt").is(":checked")) {
   //   loan = 6750;
   // } else {
@@ -252,7 +252,7 @@ function incomeDistribution() {
     "Annual Expenses": "$ " + annual_exp.toFixed(2),
     "Parents' Gift": "$ " + parents.toFixed(2),
     "Shares": "$ " + shares.toFixed(2),
-    "Car": "$ " + car.toFixed(2),
+    // "Car": "$ " + car.toFixed(2),
     "Loan Repayments": "$ " + loan.toFixed(2),
     "Fire Extinguisher": "$ " + (income * 0.65).toFixed(2),
     "Daily Expenses": "$ " + (income * 0.2).toFixed(2),
