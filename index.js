@@ -183,9 +183,10 @@ function incomeDistribution() {
   var parents = 0;
   var shares = 0;
   var tax = 0;
-  var loan = 6800;
+  const loan = 6800;
   var car = 0;
   const annual_exp = 1300;
+  const splurge = 70;
 
   if ($("#pretax").is(":checked")) {
     tax = income/2;
@@ -193,7 +194,7 @@ function incomeDistribution() {
   }
 
   // account for contribution to annual expenses after taxes accounted for.
-  income = income - annual_exp;
+  income = income - annual_exp - 2*splurge;
 
   if ($("#mojo").is(":checked")) {
     if (income > 100) {
@@ -244,7 +245,7 @@ function incomeDistribution() {
     loan = 0;
   }
 
-  grand_total = mojo + 2*parents + shares + car + tax + loan + income + annual_exp
+  grand_total = mojo + 2*parents + shares + car + tax + loan + income + annual_exp + splurge*2
   console.log("Grand total is " + grand_total)
 
   var dictIncomeDistribution = {
@@ -258,7 +259,7 @@ function incomeDistribution() {
     "Fire Extinguisher": "$ " + (income * 0.65).toFixed(2),
     "Daily Expenses": "$ " + (income * 0.2).toFixed(2),
     "Smile": "$ " + (income * 0.1).toFixed(2),
-    "Splurge": "$ " + (income * 0.025).toFixed(2)
+    "Splurge": "$ " + splurge.toFixed(2)
   };
 
   // Create a table to display the output
