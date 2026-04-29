@@ -183,7 +183,7 @@ function incomeDistribution() {
   var parents = 0;
   var shares = 0;
   var tax = 0;
-  const loan = 6800;
+  var loan = 6800;
   var car = 0;
   const annual_exp = 1300;
   const splurge = 70;
