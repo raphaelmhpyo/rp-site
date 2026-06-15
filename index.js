@@ -224,9 +224,9 @@ function incomeDistribution() {
   }
 
   if ($("#car").is(":checked")) {
-    if (income > 4000) {
-      income -= 4000;
-      car = 4000;
+    if (income > 2000) {
+      income -= 2000;
+      car = 2000;
     } else {
       alert("Insufficient funds - Primary Saving");
     }
