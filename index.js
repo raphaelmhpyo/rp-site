@@ -228,7 +228,7 @@ function incomeDistribution() {
       income -= 2000;
       car = 2000;
     } else {
-      alert("Insufficient funds - Primary Saving");
+      alert("Insufficient funds - Extra Loan Repayment");
     }
   }
   
