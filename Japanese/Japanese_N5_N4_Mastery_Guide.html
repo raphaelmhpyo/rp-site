@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語 Mastery: Zero to JLPT N4 Micro-Learning Guide</title>
+    <style>
+        :root {
+            --primary: #2b5c8f;
+            --primary-light: #eef4fa;
+            --accent: #d9534f;
+            --accent-bg: #fdf2f2;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --sidebar-width: 280px;
+            --tag-n5: #28a745;
+            --tag-n4: #007bff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic Pro", "Noto Sans JP", sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #1e293b;
+            color: #f1f5f9;
+            overflow-y: auto;
+            padding: 1.5rem 1rem;
+            z-index: 1000;
+        }
+
+        #sidebar h1 {
+            font-size: 1.25rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #sidebar .subtitle {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #334155;
+        }
+
+        .nav-section {
+            margin-bottom: 1.25rem;
+        }
+
+        .nav-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-list li {
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-list a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-list a:hover {
+            background-color: #334155;
+            color: #ffffff;
+        }
+
+        .nav-tag {
+            font-size: 0.65rem;
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .tag-n5 { background-color: rgba(40, 167, 69, 0.2); color: #4ade80; }
+        .tag-n4 { background-color: rgba(0, 123, 255, 0.2); color: #60a5fa; }
+
+        /* Main Content */
+        #main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1000px;
+        }
+
+        header.book-header {
+            background: linear-gradient(135deg, #1e293b, #2b5c8f);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header.book-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header.book-header p {
+            color: #e2e8f0;
+            font-size: 1.05rem;
+        }
+
+        .meta-bar {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        /* Module Sections */
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .module-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Mini Chapter Style */
+        .mini-chapter {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            scroll-margin-top: 2rem;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .mini-chapter:hover {
+            border-color: #cbd5e1;
+        }
+
+        .chapter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 0.75rem;
+        }
+
+        .chapter-title-group h2 {
+            font-size: 1.25rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .time-badge {
+            font-size: 0.75rem;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .concept-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .badge-n5 { background: #dcfce7; color: #166534; }
+        .badge-n4 { background: #dbeafe; color: #1e40af; }
+
+        .objective {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 0.75rem 1rem;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .explanation {
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .grammar-rule-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .grammar-rule-box code {
+            background: #e2e8f0;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            color: #0f172a;
+        }
+
+        /* Examples Table / Box */
+        .example-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.25rem 0;
+        }
+
+        .example-card {
+            background: #fafafa;
+            border-left: 3px solid var(--primary);
+            padding: 0.75rem 1rem;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .ja-text {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .ja-romaji {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .en-text {
+            font-size: 0.9rem;
+            color: #334155;
+            margin-top: 0.2rem;
+        }
+
+        /* Cross-Links Section */
+        .cross-links {
+            margin-top: 1.25rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .cross-link-item {
+            background: #f1f5f9;
+            color: var(--primary);
+            text-decoration: none;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .cross-link-item:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Quick Quiz / Check */
+        .micro-quiz {
+            background: var(--accent-bg);
+            border: 1px solid #fecaca;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .micro-quiz-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        details summary {
+            cursor: pointer;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        details[open] summary {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Vocabulary Table */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .vocab-table th, .vocab-table td {
+            border: 1px solid var(--border);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+        }
+
+        .vocab-table th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            #sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            #main-content {
+                margin-left: 0;
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <nav id="sidebar">
+        <h1>日本語 Mastery</h1>
+        <div class="subtitle">Zero to JLPT N4 Micro-Learning</div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Module 1: Foundations</div>
+            <ul class="nav-list">
+                <li><a href="#ch1"><span>1. Writing Systems</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch2"><span>2. Pronunciation & Pitch</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch3"><span>3. Sentence Structure</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch4"><span>4. Topic vs Subject (は/が)</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch5"><span>5. Essential Greetings</span> <span class="nav-tag tag-n5">N5</span></a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Module 2: Core N5 Grammar</div>
+            <ul class="nav-list">
+                <li><a href="#ch6"><span>6. Desu & Negation</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch7"><span>7. Verb Groups (1, 2, 3)</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch8"><span>8. Present/Future -masu</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch9"><span>9. Object Particle を</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch10"><span>10. Direction に & へ</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch11"><span>11. Location Particle で</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch12"><span>12. Adjectives (い vs な)</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch13"><span>13. The Te-Form (て形)</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch14"><span>14. Requests (〜てください)</span> <span class="nav-tag tag-n5">N5</span></a></li>
+                <li><a href="#ch15"><span>15. Ongoing Action (〜ている)</span> <span class="nav-tag tag-n5">N5</span></a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Module 3: N4 Foundations</div>
+            <ul class="nav-list">
+                <li><a href="#ch16"><span>16. Casual Form (Short Form)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch17"><span>17. Quotations (〜と思う)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch18"><span>18. Potential Form (〜できる)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch19"><span>19. Giving & Receiving</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch20"><span>20. Modifying Nouns</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch21"><span>21. Desire (〜たい / 〜ほしい)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch22"><span>22. Simultaneous (〜ながら)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch23"><span>23. Experience (〜たことがある)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Module 4: Advanced N4 Concepts</div>
+            <ul class="nav-list">
+                <li><a href="#ch24"><span>24. Conditional 〜たら</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch25"><span>25. Conditional 〜ば</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch26"><span>26. Passive Voice (〜られる)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch27"><span>27. Causative (〜させる)</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch28"><span>28. Honorifics: Keigo Basis</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch29"><span>29. Particle Master Matrix</span> <span class="nav-tag tag-n4">N4</span></a></li>
+                <li><a href="#ch30"><span>30. Comprehensive Review</span> <span class="nav-tag tag-n4">N4</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content">
+
+        <!-- HEADER -->
+        <header class="book-header">
+            <h1>日本語 Mastery: Zero to JLPT N4</h1>
+            <p>A structured, hyperlinked micro-learning handbook designed for 5–10 minute daily sessions.</p>
+            <div class="meta-bar">
+                <span>📚 30 Mini-Chapters</span>
+                <span>⏱️ ~5–10 Min / Chapter</span>
+                <span>🔗 Cross-Referenced Network</span>
+            </div>
+        </header>
+
+        <!-- MODULE 1 -->
+        <section class="module-card">
+            <h2 class="module-title">Module 1: Foundations & Writing Systems</h2>
+
+            <!-- Chapter 1 -->
+            <article class="mini-chapter" id="ch1">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>1. The Three Japanese Writing Systems</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Understand how Hiragana, Katakana, and Kanji work together in Japanese sentences.
+                </div>
+                <div class="explanation">
+                    Japanese uses three scripts simultaneously:
+                    <ul>
+                        <li><strong>Hiragana (ひらがな):</strong> Phonetic script (46 basic characters) used for native words, particles, and verb endings.</li>
+                        <li><strong>Katakana (カタカナ):</strong> Phonetic script (46 basic characters) used primarily for loanwords, foreign names, and emphasis.</li>
+                        <li><strong>Kanji (漢字):</strong> Ideographic characters borrowed from Chinese, representing core words, concepts, and roots.</li>
+                    </ul>
+                </div>
+                <div class="grammar-rule-box">
+                    Example Breakdown: <code>私 は パン を 食べます。</code> (Watashi wa pan o tabemasu.)
+                    <br>• 私 (Kanji = I) • は (Hiragana particle) • パン (Katakana = Bread) • を (Hiragana particle) • 食べます (Kanji + Hiragana verb)
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">アメリカ人です。</div>
+                        <div class="ja-romaji">Amerika-jin desu.</div>
+                        <div class="en-text">I am American. (アメリカ = Katakana; 人 = Kanji; です = Hiragana)</div>
+                    </div>
+                </div>
+                <div class="micro-quiz">
+                    <div class="micro-quiz-title">Quick Check</div>
+                    <p>Which writing system is used for foreign loanwords like "coffee" (コーヒー)?</p>
+                    <details>
+                        <summary>Show Answer</summary>
+                        <p><strong>Katakana!</strong> Foreign loanwords are written in Katakana.</p>
+                    </details>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Next Concept:</span>
+                    <a href="#ch2" class="cross-link-item">Chapter 2: Pronunciation</a>
+                    <a href="#ch3" class="cross-link-item">Chapter 3: Sentence Structure</a>
+                </div>
+            </article>
+
+            <!-- Chapter 2 -->
+            <article class="mini-chapter" id="ch2">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>2. Pronunciation & Pitch Accent Basics</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Master the 5 vowel sounds and understand Pitch Accent.
+                </div>
+                <div class="explanation">
+                    Japanese pronunciation is remarkably consistent. There are only 5 basic vowels: <strong>A (あ), I (い), U (う), E (え), O (お)</strong>.
+                    Unlike English stress accent, Japanese uses <em>Pitch Accent</em> (high vs. low pitch).
+                </div>
+                <div class="grammar-rule-box">
+                    Vowels: あ (ah as in 'father'), い (ee as in 'feet'), う (oo as in 'boot'), え (eh as in 'bed'), お (oh as in 'go').
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">雨 (あめ - High to Low) vs 飴 (あめ - Low to High)</div>
+                        <div class="ja-romaji">Ame (Rain) vs Ame (Candy)</div>
+                        <div class="en-text">Pitch changes the meaning of homophones!</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch1" class="cross-link-item">Chapter 1: Writing Systems</a>
+                    <a href="#ch5" class="cross-link-item">Chapter 5: Greetings</a>
+                </div>
+            </article>
+
+            <!-- Chapter 3 -->
+            <article class="mini-chapter" id="ch3">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>3. SOV Sentence Structure & Word Order</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 7 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Understand why verbs always go at the very end of Japanese sentences.
+                </div>
+                <div class="explanation">
+                    English is Subject-Verb-Object (SVO: "I eat apples"). Japanese is <strong>Subject-Object-Verb (SOV)</strong>. The verb ALWAYS comes last!
+                </div>
+                <div class="grammar-rule-box">
+                    English Order: [Subject] [Verb] [Object]<br>
+                    Japanese Order: [Subject + Topic Particle] [Object + Particle] <strong>[VERB]</strong>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">田中さんはりんごを食べます。</div>
+                        <div class="ja-romaji">Tanaka-san wa ringo o tabemasu.</div>
+                        <div class="en-text">Tanaka eats an apple. (Lit: Tanaka [topic] apple [object] eats)</div>
+                    </div>
+                </div>
+                <div class="micro-quiz">
+                    <div class="micro-quiz-title">Quick Check</div>
+                    <p>Where does the verb go in a Japanese sentence?</p>
+                    <details>
+                        <summary>Show Answer</summary>
+                        <p>At the <strong>very end</strong> of the sentence.</p>
+                    </details>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch4" class="cross-link-item">Chapter 4: は vs が</a>
+                    <a href="#ch9" class="cross-link-item">Chapter 9: Object Particle を</a>
+                </div>
+            </article>
+
+            <!-- Chapter 4 -->
+            <article class="mini-chapter" id="ch4">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>4. Topic (は) vs Subject (が)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Demystify the fundamental difference between particles は (wa) and が (ga).
+                </div>
+                <div class="explanation">
+                    • <strong>は (wa):</strong> Marks the TOPIC ("As for X..."). It provides context or sets contrast.<br>
+                    • <strong>が (ga):</strong> Marks the SPECIFIC SUBJECT. It introduces new information or emphasizes WHO/WHAT is doing the action.
+                </div>
+                <div class="grammar-rule-box">
+                    • [X] は ... = "Speaking of [X]..." (Focus is on what follows)<br>
+                    • [X] が ... = "[X] is the one who..." (Focus is on [X] itself)
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">私 は 学生です。</div>
+                        <div class="ja-romaji">Watashi wa gakusei desu.</div>
+                        <div class="en-text">As for me, I am a student.</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">誰 が 来ましたか。田中さん が 来ました。</div>
+                        <div class="ja-romaji">Dare ga kimashita ka. Tanaka-san ga kimashita.</div>
+                        <div class="en-text">Who came? Tanaka-san came (Tanaka is the specific answer).</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch6" class="cross-link-item">Chapter 6: Desu</a>
+                    <a href="#ch29" class="cross-link-item">Chapter 29: Particle Matrix</a>
+                </div>
+            </article>
+
+            <!-- Chapter 5 -->
+            <article class="mini-chapter" id="ch5">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>5. Essential Daily Greetings & Set Phrases</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Learn core polite expressions used every day in Japan.
+                </div>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Japanese</th><th>Romaji</th><th>Meaning</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>おはようございます</td><td>Ohayou gozaimasu</td><td>Good morning (polite)</td></tr>
+                        <tr><td>こんにちは</td><td>Konnichiwa</td><td>Hello / Good afternoon</td></tr>
+                        <tr><td>こんばんは</td><td>Konbanwa</td><td>Good evening</td></tr>
+                        <tr><td>ありがとうございます</td><td>Arigatou gozaimasu</td><td>Thank you very much</td></tr>
+                        <tr><td>すみません</td><td>Sumimasen</td><td>Excuse me / Sorry</td></tr>
+                        <tr><td>いただきます</td><td>Itadakimasu</td><td>Phrase before eating</td></tr>
+                    </tbody>
+                </table>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch28" class="cross-link-item">Chapter 28: Keigo / Politeness</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- MODULE 2 -->
+        <section class="module-card">
+            <h2 class="module-title">Module 2: Essential Japanese Grammar & N5 Core</h2>
+
+            <!-- Chapter 6 -->
+            <article class="mini-chapter" id="ch6">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>6. The Copula: です (Desu) & Negation</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 6 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Express "A is B" and "A is not B" in polite present tense.
+                </div>
+                <div class="explanation">
+                    <code>です (desu)</code> acts like "is/am/are". To make it negative, replace です with <code>ではありません (de wa arimasen)</code> or casual <code>じゃないです (ja nai desu)</code>.
+                </div>
+                <div class="grammar-rule-box">
+                    • Affirmative: [N1] は [N2] <strong>です</strong>。<br>
+                    • Negative: [N1] は [N2] <strong>ではありません / じゃないです</strong>。<br>
+                    • Past: [N1] は [N2] <strong>でした</strong>。
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">私は先生ではありません。</div>
+                        <div class="ja-romaji">Watashi wa sensei de wa arimasen.</div>
+                        <div class="en-text">I am not a teacher.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch4" class="cross-link-item">Chapter 4: Topic は</a>
+                    <a href="#ch16" class="cross-link-item">Chapter 16: Casual Form (だ)</a>
+                </div>
+            </article>
+
+            <!-- Chapter 7 -->
+            <article class="mini-chapter" id="ch7">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>7. Verb Conjugation Groups (Group 1, 2, 3)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Categorize Japanese verbs into 3 groups to master all future conjugations.
+                </div>
+                <div class="explanation">
+                    Every Japanese verb belongs to one of three groups:
+                    <ul>
+                        <li><strong>Group 1 (Godan / U-verbs):</strong> End in ~u, ~ku, ~gu, ~su, ~tsu, ~nu, ~bu, ~mu, or ~ru (preceded by a/o/u). e.g., 飲む (nomu), 行く (iku).</li>
+                        <li><strong>Group 2 (Ichidan / Ru-verbs):</strong> End in ~ru (preceded by 'i' or 'e' sound). e.g., 食べる (taberu), 見る (miru).</li>
+                        <li><strong>Group 3 (Irregular):</strong> Only two main verbs: <strong>する (suru - to do)</strong> and <strong>来る (kuru - to come)</strong>.</li>
+                    </ul>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Critical Dependent Chapters:</span>
+                    <a href="#ch8" class="cross-link-item">Chapter 8: Masu-form</a>
+                    <a href="#ch13" class="cross-link-item">Chapter 13: Te-form</a>
+                    <a href="#ch18" class="cross-link-item">Chapter 18: Potential Form</a>
+                </div>
+            </article>
+
+            <!-- Chapter 8 -->
+            <article class="mini-chapter" id="ch8">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>8. Polite Present & Future Tense (〜ます)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 7 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Conjugate verbs into polite present/future form (~masu) and past form (~mashita).
+                </div>
+                <div class="grammar-rule-box">
+                    • Group 1: Shift root vowel ~u to ~i + ます (行<u>く</u> → 行<u>き</u>ます)<br>
+                    • Group 2: Drop ~る + ます (表べる → 食べます)<br>
+                    • Group 3: する → します | 来る → 来ます (きます)
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">明日、東京へ行きます。</div>
+                        <div class="ja-romaji">Ashita, Toukyou e ikimasu.</div>
+                        <div class="en-text">I will go to Tokyo tomorrow.</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">昨日、映画を見ました。</div>
+                        <div class="ja-romaji">Kinou, eiga o mimashita.</div>
+                        <div class="en-text">I watched a movie yesterday.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch7" class="cross-link-item">Chapter 7: Verb Groups</a>
+                    <a href="#ch10" class="cross-link-item">Chapter 10: Particles に & へ</a>
+                </div>
+            </article>
+
+            <!-- Chapter 9 -->
+            <article class="mini-chapter" id="ch9">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>9. Direct Object Particle: を (o)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Mark the noun receiving the action of an active verb.
+                </div>
+                <div class="explanation">
+                    The particle <code>を</code> (pronounced "o") marks the direct object of an action verb.
+                </div>
+                <div class="grammar-rule-box">
+                    [Noun] <strong>を</strong> [Action Verb]
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">水を飲みます。</div>
+                        <div class="ja-romaji">Mizu o nomimasu.</div>
+                        <div class="en-text">I drink water.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch3" class="cross-link-item">Chapter 3: SOV Order</a>
+                    <a href="#ch29" class="cross-link-item">Chapter 29: Particle Matrix</a>
+                </div>
+            </article>
+
+            <!-- Chapter 10 -->
+            <article class="mini-chapter" id="ch10">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>10. Destination & Time Particles: に (ni) & へ (e)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 6 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Correctly express destinations and specific time points.
+                </div>
+                <div class="explanation">
+                    • <code>に (ni)</code> marks specific points in time (7時に - at 7 o'clock) AND destinations.<br>
+                    • <code>へ (e)</code> marks direction/movement towards a destination ("heading towards").
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">７時に学校へ行きます。</div>
+                        <div class="ja-romaji">Shichi-ji ni gakkou e ikimasu.</div>
+                        <div class="en-text">I go to school at 7 o'clock.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch11" class="cross-link-item">Chapter 11: Particle で</a>
+                </div>
+            </article>
+
+            <!-- Chapter 11 -->
+            <article class="mini-chapter" id="ch11">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>11. Location of Action Particle: で (de)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Differentiate location of action (で) from destination (に).
+                </div>
+                <div class="explanation">
+                    When an action takes place AT a location, mark the location with <code>で</code>. It also means "by means of" (e.g. by train).
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">図書館で勉強します。</div>
+                        <div class="ja-romaji">Toshokan de benkyou shimasu.</div>
+                        <div class="en-text">I study AT the library.</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">電車で行きます。</div>
+                        <div class="ja-romaji">Densha de ikimasu.</div>
+                        <div class="en-text">I will go BY train.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch10" class="cross-link-item">Chapter 10: Particle に vs へ</a>
+                </div>
+            </article>
+
+            <!-- Chapter 12 -->
+            <article class="mini-chapter" id="ch12">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>12. Adjectives: い-Adjectives vs な-Adjectives</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Learn how to conjugate and attach both types of adjectives to nouns.
+                </div>
+                <div class="explanation">
+                    Japanese adjectives function like mini-verbs and fall into two classes:
+                    <ul>
+                        <li><strong>い-adjectives (i-adj):</strong> End in ~い. Conjugate directly (e.g. 大きい → 大きくない).</li>
+                        <li><strong>な-adjectives (na-adj):</strong> Require <code>な</code> when modifying nouns directly (e.g. 静かな町 - quiet town). Conjugate using <code>です/ではありません</code>.</li>
+                    </ul>
+                </div>
+                <div class="grammar-rule-box">
+                    • i-adj negative: Drop ~い + <code>くない</code> (たかい → たかくない)<br>
+                    • na-adj + noun: [Adj] <code>な</code> [Noun] (きれいな人)
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch6" class="cross-link-item">Chapter 6: Desu</a>
+                </div>
+            </article>
+
+            <!-- Chapter 13 -->
+            <article class="mini-chapter" id="ch13">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>13. Master the Te-Form (て形)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 10 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Learn the single most versatile verb transformation in Japanese.
+                </div>
+                <div class="explanation">
+                    The Te-form is used to connect sentences, make requests, express ongoing state, and grant permission.
+                </div>
+                <div class="grammar-rule-box">
+                    <strong>Group 1 Rules:</strong><br>
+                    • う, つ, る → <code>った</code> / <code>って</code> (買っていく → 買って)<br>
+                    • む, ぶ, ぬ → <code>んだ</code> / <code>んで</code> (飲む → 飲んで)<br>
+                    • く → <code>いた</code> / <code>いて</code> (書く → 書いて) [Exception: 行く → 行って]<br>
+                    • ぐ → <code>いだ</code> / <code>いで</code> (泳ぐ → 泳いで)<br>
+                    • す → <code>した</code> / <code>して</code> (話す → 話して)<br>
+                    <strong>Group 2:</strong> Drop ~る + <code>て</code> (食べる → 食べて)<br>
+                    <strong>Group 3:</strong> する → <code>して</code> | 来る → <code>来て(きて)</code>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Critical Dependent Concepts:</span>
+                    <a href="#ch14" class="cross-link-item">Chapter 14: Requests</a>
+                    <a href="#ch15" class="cross-link-item">Chapter 15: Ongoing Action</a>
+                    <a href="#ch22" class="cross-link-item">Chapter 22: Concurrent Action</a>
+                </div>
+            </article>
+
+            <!-- Chapter 14 -->
+            <article class="mini-chapter" id="ch14">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>14. Making Requests: 〜てください</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Ask someone politely to do something using Te-form + kudasai.
+                </div>
+                <div class="grammar-rule-box">
+                    [Verb in て-form] + <strong>ください</strong>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">ちょっと待ってください。</div>
+                        <div class="ja-romaji">Chotto matte kudasai.</div>
+                        <div class="en-text">Please wait a moment. (待つ → 待って)</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">日本語で話してください。</div>
+                        <div class="ja-romaji">Nihongo de hanashite kudasai.</div>
+                        <div class="en-text">Please speak in Japanese.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch13" class="cross-link-item">Chapter 13: Te-Form</a>
+                </div>
+            </article>
+
+            <!-- Chapter 15 -->
+            <article class="mini-chapter" id="ch15">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>15. Ongoing Action & Resultant States (〜ている)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n5">N5</span>
+                        <span class="time-badge">⏱️ 6 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Express actions happening right now (-ing) or ongoing states (living, knowing, married).
+                </div>
+                <div class="grammar-rule-box">
+                    [Verb in て-form] + <strong>いる / います</strong>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">今、本を読んでいます。</div>
+                        <div class="ja-romaji">Ima, hon o yonde imasu.</div>
+                        <div class="en-text">I am reading a book right now.</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">東京に住んでいます。</div>
+                        <div class="ja-romaji">Toukyou ni sunde imasu.</div>
+                        <div class="en-text">I live in Tokyo. (Ongoing state of living)</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch13" class="cross-link-item">Chapter 13: Te-form</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- MODULE 3 -->
+        <section class="module-card">
+            <h2 class="module-title">Module 3: Expanding Horizons & Core JLPT N4</h2>
+
+            <!-- Chapter 16 -->
+            <article class="mini-chapter" id="ch16">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>16. Casual / Short Form (Plain Form)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Use dictionary form, ta-form, nai-form, and plain copula with friends and family.
+                </div>
+                <div class="explanation">
+                    JLPT N4 grammar relies heavily on combining the <strong>Casual/Short Form</strong> with various grammar structures.
+                </div>
+                <div class="grammar-rule-box">
+                    • Present Affirmative: Dictionary Form (食べる)<br>
+                    • Present Negative: Nai Form (食べない)<br>
+                    • Past Affirmative: Ta Form (食べた)<br>
+                    • Past Negative: Nakatta Form (食べなかった)
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Critical Dependent Chapters:</span>
+                    <a href="#ch17" class="cross-link-item">Chapter 17: Quotations</a>
+                    <a href="#ch23" class="cross-link-item">Chapter 23: Experience</a>
+                    <a href="#ch24" class="cross-link-item">Chapter 24: Conditional たら</a>
+                </div>
+            </article>
+
+            <!-- Chapter 17 -->
+            <article class="mini-chapter" id="ch17">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>17. Quotations & Thoughts: 〜と思う / 〜と言う</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 7 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Express thoughts ("I think that...") and report statements ("They said that...").
+                </div>
+                <div class="grammar-rule-box">
+                    [Plain Form Sentence] + <strong>と 思います (to omowimasu)</strong> = I think that...<br>
+                    [Plain Form Sentence] + <strong>と 言っていました (to itte imashita)</strong> = They said that...
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">明日、雨が降ると思います。</div>
+                        <div class="ja-romaji">Ashita, ame ga kuru to omoimasu.</div>
+                        <div class="en-text">I think it will rain tomorrow.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch16" class="cross-link-item">Chapter 16: Casual Form</a>
+                </div>
+            </article>
+
+            <!-- Chapter 18 -->
+            <article class="mini-chapter" id="ch18">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>18. Potential Form: Ability to Do (〜できる / 〜れる)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Conjugate verbs to express "can do X".
+                </div>
+                <div class="grammar-rule-box">
+                    • Group 1: Shift ~u ending to ~e sound + <code>る</code> (話す → 話せる)<br>
+                    • Group 2: Drop ~る + <code>られる</code> (or casual <code>れる</code>) (食べる → 食べられる)<br>
+                    • Group 3: する → <code>できる</code> | 来る → <code>来られる(こられる)</code><br>
+                    <em>Note: Direct object particle を usually changes to が with potential verbs!</em>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">日本語が話せます。</div>
+                        <div class="ja-romaji">Nihongo ga hanasemasu.</div>
+                        <div class="en-text">I can speak Japanese.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch7" class="cross-link-item">Chapter 7: Verb Groups</a>
+                    <a href="#ch4" class="cross-link-item">Chapter 4: Subject Particle が</a>
+                </div>
+            </article>
+
+            <!-- Chapter 19 -->
+            <article class="mini-chapter" id="ch19">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>19. Giving & Receiving: あげる, もらう, くれる</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 9 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Master the direction of giving and receiving favors and physical items.
+                </div>
+                <div class="grammar-rule-box">
+                    • <strong>あげる (ageru):</strong> I give to you / someone gives to another.<br>
+                    • <strong>くれる (kureru):</strong> Someone gives to ME (or my in-group).<br>
+                    • <strong>もらう (morau):</strong> I receive from someone.
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">田中さんが私に本をくれました。</div>
+                        <div class="ja-romaji">Tanaka-san ga watashi ni hon o kuremashita.</div>
+                        <div class="en-text">Tanaka-san gave me a book.</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">友だちにプレゼントをあげました。</div>
+                        <div class="ja-romaji">Tomodachi ni purezento o agemashita.</div>
+                        <div class="en-text">I gave a present to my friend.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch13" class="cross-link-item">Chapter 13: Te-Form (〜てあげる/〜てくれる)</a>
+                </div>
+            </article>
+
+            <!-- Chapter 20 -->
+            <article class="mini-chapter" id="ch20">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>20. Modifying Nouns with Verb Clauses</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Create complex sentences like "The man who bought a car" without needing relative pronouns like 'who' or 'which'.
+                </div>
+                <div class="explanation">
+                    In Japanese, simply place a plain verb phrase directly BEFORE a noun to modify it.
+                </div>
+                <div class="grammar-rule-box">
+                    [Plain Verb / Sentence] + [Noun]
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">昨日買った本</div>
+                        <div class="ja-romaji">Kinou kat-ta hon</div>
+                        <div class="en-text">The book that I bought yesterday. (Lit: Yesterday-bought book)</div>
+                    </div>
+                    <div class="example-card">
+                        <div class="ja-text">あそこに立っている人は田中さんです。</div>
+                        <div class="ja-romaji">Asoko ni tat-te iru hito wa Tanaka-san desu.</div>
+                        <div class="en-text">The person who is standing over there is Tanaka-san.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch16" class="cross-link-item">Chapter 16: Casual Form</a>
+                    <a href="#ch15" class="cross-link-item">Chapter 15: Ongoing Action</a>
+                </div>
+            </article>
+
+            <!-- Chapter 21 -->
+            <article class="mini-chapter" id="ch21">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>21. Expressing Desire: 〜たい (Want to do) & 〜ほしい (Want an object)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 6 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Express what you want to do (verb) vs what item you want (noun).
+                </div>
+                <div class="grammar-rule-box">
+                    • Want to do (Verb stem + たい): 寿司が/を <strong>食べたい</strong>です。(I want to eat sushi)<br>
+                    • Want an object (Noun + が ほしい): 新しい車が <strong>ほしい</strong>です。(I want a new car)
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch12" class="cross-link-item">Chapter 12: い-Adjectives (たい behaves like い-adj)</a>
+                </div>
+            </article>
+
+            <!-- Chapter 22 -->
+            <article class="mini-chapter" id="ch22">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>22. Simultaneous Actions: 〜ながら (While doing)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Describe doing two actions at the same time.
+                </div>
+                <div class="grammar-rule-box">
+                    [Verb Stem] + <strong>ながら</strong>, [Main Action Verb]
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">音楽を聞きながら勉強します。</div>
+                        <div class="ja-romaji">Ongaku o kikinagara benkyou shimasu.</div>
+                        <div class="en-text">I study while listening to music. (Main action is studying)</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch8" class="cross-link-item">Chapter 8: Masu-stem</a>
+                </div>
+            </article>
+
+            <!-- Chapter 23 -->
+            <article class="mini-chapter" id="ch23">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>23. Expressing Past Experience: 〜たことがある</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 6 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Say "I have had the experience of doing X".
+                </div>
+                <div class="grammar-rule-box">
+                    [Verb in た-form (Past Casual)] + <strong>ことがあります</strong>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">日本へ行ったことがありますか。</div>
+                        <div class="ja-romaji">Nihon e itta koto ga arimasu ka.</div>
+                        <div class="en-text">Have you ever been to Japan?</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch16" class="cross-link-item">Chapter 16: Ta-form (Casual Past)</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- MODULE 4 -->
+        <section class="module-card">
+            <h2 class="module-title">Module 4: Advanced N4 Structures & Complete Reference</h2>
+
+            <!-- Chapter 24 -->
+            <article class="mini-chapter" id="ch24">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>24. Conditional: 〜たら (If / When)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 7 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Form the most common conditional structure for "If [X] happens, then [Y]".
+                </div>
+                <div class="grammar-rule-box">
+                    [Verb in た-form] + <strong>ら</strong>, [Result Clause]
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">雨が降ったら、行きません。</div>
+                        <div class="ja-romaji">Ame ga futtara, ikimasen.</div>
+                        <div class="en-text">If it rains, I won't go.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch16" class="cross-link-item">Chapter 16: Casual Past (た-form)</a>
+                    <a href="#ch25" class="cross-link-item">Chapter 25: Conditional 〜ば</a>
+                </div>
+            </article>
+
+            <!-- Chapter 25 -->
+            <article class="mini-chapter" id="ch25">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>25. Hypothetical Conditional: 〜ば (If)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 7 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Form the general/hypothetical "if" condition.
+                </div>
+                <div class="grammar-rule-box">
+                    • Verbs: Change ~u to ~eba (行く → 行けば)<br>
+                    • い-adj: Drop ~い + ければ (安ければ - if it is cheap)<br>
+                    • Noun / な-adj: Add なら(ば)
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">安ければ、買います。</div>
+                        <div class="ja-romaji">Yasukereba, kaimasu.</div>
+                        <div class="en-text">If it is cheap, I will buy it.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch24" class="cross-link-item">Chapter 24: Conditional 〜たら</a>
+                </div>
+            </article>
+
+            <!-- Chapter 26 -->
+            <article class="mini-chapter" id="ch26">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>26. Passive Voice: 〜られる / 〜れる</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Express passive actions ("was eaten", "was spoken to", suffering passive).
+                </div>
+                <div class="grammar-rule-box">
+                    • Group 1: Change ~u to ~a sound + <code>れる</code> (褒める/書く → 書かれる)<br>
+                    • Group 2: Drop ~る + <code>られる</code> (食べる → 食べられる)<br>
+                    • Group 3: する → <code>される</code> | 来る → <code>来られる(こられる)</code>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">先生に褒められました。</div>
+                        <div class="ja-romaji">Sensei ni homeramashita.</div>
+                        <div class="en-text">I was praised by the teacher. (Agent of action marked by に)</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch27" class="cross-link-item">Chapter 27: Causative Form</a>
+                </div>
+            </article>
+
+            <!-- Chapter 27 -->
+            <article class="mini-chapter" id="ch27">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>27. Causative Voice: 〜させる (Make / Let someone do)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Express making or allowing someone to do an action.
+                </div>
+                <div class="grammar-rule-box">
+                    • Group 1: Change ~u to ~a sound + <code>させる</code> (行く → 行かせる)<br>
+                    • Group 2: Drop ~る + <code>させる</code> (食べる → 食べさせる)<br>
+                    • Group 3: する → <code>させる</code> | 来る → <code>来させる(こさせる)</code>
+                </div>
+                <div class="example-list">
+                    <div class="example-card">
+                        <div class="ja-text">子供に野菜を食べさせます。</div>
+                        <div class="ja-romaji">Kodomo ni yasai o tabesasemasu.</div>
+                        <div class="en-text">I make/let my child eat vegetables.</div>
+                    </div>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch26" class="cross-link-item">Chapter 26: Passive Voice</a>
+                </div>
+            </article>
+
+            <!-- Chapter 28 -->
+            <article class="mini-chapter" id="ch28">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>28. Introduction to Honorifics: Keigo (敬語)</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 8 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Distinguish Honorific (尊敬語 Sonkeigo) and Humble (謙譲語 Kenjougo) speech.
+                </div>
+                <div class="explanation">
+                    • <strong>Sonkeigo (Respectful):</strong> Elevates the actions of the listener or customer.<br>
+                    • <strong>Kenjougo (Humble):</strong> Lowers your own actions to show respect to the listener.
+                </div>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Dictionary Form</th><th>Sonkeigo (Respectful)</th><th>Kenjougo (Humble)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>行く / 来る</td><td>いらっしゃいます</td><td>参ります (まいります)</td></tr>
+                        <tr><td>言う</td><td>おっしゃいます</td><td>申します (もうします)</td></tr>
+                        <tr><td>食べる / 飲む</td><td>召し上がります</td><td>頂きます (いただきます)</td></tr>
+                        <tr><td>する</td><td>なさいます</td><td>いたします</td></tr>
+                    </tbody>
+                </table>
+                <div class="cross-links">
+                    <span>🔗 Linked Concepts:</span>
+                    <a href="#ch5" class="cross-link-item">Chapter 5: Set Phrases</a>
+                </div>
+            </article>
+
+            <!-- Chapter 29 -->
+            <article class="mini-chapter" id="ch29">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>29. Particle Master Reference Matrix</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 10 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> A quick master lookup table for all N5 & N4 particles.
+                </div>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Particle</th><th>Primary Function</th><th>Example</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>は (wa)</strong></td><td>Topic Marker</td><td>私は学生です。(As for me...)</td></tr>
+                        <tr><td><strong>が (ga)</strong></td><td>Subject / Identifies who/what</td><td>誰が来ましたか。(Who came?)</td></tr>
+                        <tr><td><strong>を (o)</strong></td><td>Direct Object</td><td>水を飲む。(Drink water)</td></tr>
+                        <tr><td><strong>に (ni)</strong></td><td>Target, Specific Time, Destination</td><td>7時に行く。(Go at 7)</td></tr>
+                        <tr><td><strong>へ (e)</strong></td><td>Direction of movement</td><td>日本へ行く。(Head towards Japan)</td></tr>
+                        <tr><td><strong>で (de)</strong></td><td>Location of action, Means/Tool</td><td>バスで行く。(Go by bus)</td></tr>
+                        <tr><td><strong>と (to)</strong></td><td>Together with, Quotes</td><td>友達と話す。(Talk with a friend)</td></tr>
+                        <tr><td><strong>も (mo)</strong></td><td>"Also" / "Too"</td><td>私も行く。(I also go)</td></tr>
+                        <tr><td><strong>から (kara)</strong></td><td>Starting point / Because</td><td>東京から。(From Tokyo)</td></tr>
+                        <tr><td><strong>まで (made)</strong></td><td>Ending point ("Until")</td><td>5時まで。(Until 5 o'clock)</td></tr>
+                        <tr><td><strong>より (yori)</strong></td><td>Comparison ("Than")</td><td>これより大きい。(Bigger than this)</td></tr>
+                    </tbody>
+                </table>
+                <div class="cross-links">
+                    <span>🔗 Linked Chapters:</span>
+                    <a href="#ch4" class="cross-link-item">Ch 4: は vs が</a>
+                    <a href="#ch9" class="cross-link-item">Ch 9: を</a>
+                    <a href="#ch10" class="cross-link-item">Ch 10: に & へ</a>
+                    <a href="#ch11" class="cross-link-item">Ch 11: で</a>
+                </div>
+            </article>
+
+            <!-- Chapter 30 -->
+            <article class="mini-chapter" id="ch30">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <h2>30. JLPT N5/N4 Study Strategy & Roadmap</h2>
+                    </div>
+                    <div>
+                        <span class="concept-badge badge-n4">N4</span>
+                        <span class="time-badge">⏱️ 5 min</span>
+                    </div>
+                </div>
+                <div class="objective">
+                    <strong>Goal:</strong> Optimize your daily micro-learning routine for long-term retention.
+                </div>
+                <div class="explanation">
+                    <h3>The 5-Minute Daily Routine:</h3>
+                    <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Step 1 (2 mins):</strong> Read 1 mini-chapter and memorize the single grammar box.</li>
+                        <li><strong>Step 2 (2 mins):</strong> Speak all example sentences out loud twice.</li>
+                        <li><strong>Step 3 (1 min):</strong> Complete the quick quiz and click on cross-linked rules to reinforce connected grammar.</li>
+                    </ol>
+                    <p style="margin-top: 1rem;">Congratulations on mastering the foundational structures from Zero to N4 level! 祝・N4合格！</p>
+                </div>
+                <div class="cross-links">
+                    <span>🔗 Return to Top:</span>
+                    <a href="#ch1" class="cross-link-item">Chapter 1: Writing Systems</a>
+                    <a href="#ch13" class="cross-link-item">Chapter 13: Te-Form</a>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

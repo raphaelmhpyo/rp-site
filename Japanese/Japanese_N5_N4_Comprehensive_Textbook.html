@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日本語 Mastery: Complete JLPT N5–N4 Textbook</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #eff6ff;
+            --secondary: #0d9488;
+            --accent: #e11d48;
+            --accent-bg: #fff1f2;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #cbd5e1;
+            --sidebar-width: 300px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic Pro", "Noto Sans JP", sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.7;
+            display: flex;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-y: auto;
+            padding: 1.5rem 1rem;
+            z-index: 1000;
+        }
+        #sidebar h1 { font-size: 1.2rem; color: #fff; margin-bottom: 0.2rem; }
+        #sidebar .subtitle { font-size: 0.8rem; color: #94a3b8; margin-bottom: 1.5rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .nav-section { margin-bottom: 1.25rem; }
+        .nav-title { font-size: 0.7rem; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+        .nav-list { list-style: none; }
+        .nav-list li { margin-bottom: 0.25rem; }
+        .nav-list a {
+            color: #cbd5e1; text-decoration: none; font-size: 0.825rem; display: block; padding: 0.35rem 0.5rem; border-radius: 4px; transition: all 0.2s;
+        }
+        .nav-list a:hover { background-color: #1e293b; color: #38bdf8; }
+
+        /* Main Content */
+        #main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 2.5rem 3.5rem;
+            max-width: 1100px;
+        }
+
+        .book-header {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: white; padding: 2.5rem; border-radius: 12px; margin-bottom: 2.5rem;
+        }
+        .book-header h1 { font-size: 2.4rem; margin-bottom: 0.5rem; }
+        .book-header p { color: #93c5fd; font-size: 1.1rem; }
+
+        .mini-chapter {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            scroll-margin-top: 2rem;
+        }
+
+        .chapter-badge-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .badge { font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase; }
+        .badge-n5 { background: #dcfce7; color: #166534; }
+        .badge-n4 { background: #dbeafe; color: #1e40af; }
+        .time-est { font-size: 0.8rem; background: #f1f5f9; color: #475569; padding: 0.2rem 0.6rem; border-radius: 12px; }
+
+        h2.chapter-title { font-size: 1.6rem; color: #0f172a; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem; }
+        h3.section-subtitle { font-size: 1.15rem; color: var(--primary); margin: 1.5rem 0 0.75rem 0; }
+
+        .objective-box {
+            background: var(--primary-light); border-left: 4px solid var(--primary); padding: 0.85rem 1.25rem; border-radius: 0 6px 6px 0; margin-bottom: 1.5rem; font-size: 0.95rem;
+        }
+
+        /* Charts & Tables */
+        .kana-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        .kana-card {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.6rem; text-align: center;
+        }
+        .kana-char { font-size: 1.8rem; font-weight: 700; color: #0f172a; display: block; line-height: 1.1; }
+        .kana-roma { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+        .table-custom {
+            width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.9rem;
+        }
+        .table-custom th, .table-custom td { border: 1px solid var(--border); padding: 0.75rem; text-align: left; }
+        .table-custom th { background-color: #f1f5f9; color: #1e293b; font-weight: 600; }
+
+        /* Formula & Examples */
+        .formula-box {
+            background: #1e293b; color: #f8fafc; padding: 1rem 1.25rem; border-radius: 6px; font-family: monospace; font-size: 1rem; margin: 1rem 0; line-height: 1.5;
+        }
+        .formula-box code { color: #38bdf8; font-weight: 700; }
+
+        .example-block {
+            background: #fafafa; border-left: 4px solid var(--secondary); padding: 1rem; border-radius: 0 6px 6px 0; margin: 0.75rem 0;
+        }
+        .ja-main { font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-bottom: 0.2rem; }
+        .ja-roma { font-size: 0.85rem; color: var(--text-muted); font-style: italic; }
+        .en-trans { font-size: 0.95rem; color: #334155; margin-top: 0.25rem; }
+        .breakdown { font-size: 0.825rem; color: #475569; margin-top: 0.4rem; background: #fff; padding: 0.4rem 0.6rem; border-radius: 4px; border: 1px solid #e2e8f0; }
+
+        /* Cross Links & Quizzes */
+        .cross-network {
+            margin-top: 1.75rem; padding-top: 1rem; border-top: 1px dashed var(--border); font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+        }
+        .link-chip {
+            background: #e0f2fe; color: #0369a1; text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 4px; font-weight: 600; transition: background 0.2s;
+        }
+        .link-chip:hover { background: #0284c7; color: white; }
+
+        .quiz-card {
+            background: var(--accent-bg); border: 1px solid #fecaca; border-radius: 8px; padding: 1.25rem; margin-top: 1.5rem;
+        }
+        .quiz-title { font-size: 0.85rem; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 0.5rem; }
+        details summary { cursor: pointer; color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-top: 0.5rem; }
+        details[open] summary { margin-bottom: 0.5rem; }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            #sidebar { width: 100%; height: auto; position: relative; }
+            #main-content { margin-left: 0; padding: 1.5rem; }
+            .kana-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <nav id="sidebar">
+        <h1>日本語 Mastery</h1>
+        <div class="subtitle">Comprehensive Zero to JLPT N4</div>
+
+        <div class="nav-section">
+            <div class="nav-title">Module 1: Complete Writing Systems</div>
+            <ul class="nav-list">
+                <li><a href="#ch1">1. Writing Systems Overview</a></li>
+                <li><a href="#ch2">2. Master Hiragana (46 Main + Dakuon)</a></li>
+                <li><a href="#ch3">3. Master Katakana (46 Main + Loanwords)</a></li>
+                <li><a href="#ch4">4. Kanji Fundamentals & Radicals</a></li>
+                <li><a href="#ch5">5. Pitch Accent & Pronunciation Rules</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Module 2: Essential N5 Grammar</div>
+            <ul class="nav-list">
+                <li><a href="#ch6">6. Sentence Structure (SOV)</a></li>
+                <li><a href="#ch7">7. Topic (は) vs Subject (が) Deep-Dive</a></li>
+                <li><a href="#ch8">8. Copula (です) & All Formality Variations</a></li>
+                <li><a href="#ch9">9. Complete Verb Group Classification</a></li>
+                <li><a href="#ch10">10. Polite Present Form (~ます)</a></li>
+                <li><a href="#ch11">11. Object Particle (を) & Transitivity</a></li>
+                <li><a href="#ch12">12. Destination Particles (に vs へ)</a></li>
+                <li><a href="#ch13">13. Location Particle (で) & Instrumental</a></li>
+                <li><a href="#ch14">14. Adjectives: い-adj vs な-adj Conjugations</a></li>
+                <li><a href="#ch15">15. The Master Te-Form (て形) Mechanics</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Module 3: N5 Practical Mastery</div>
+            <ul class="nav-list">
+                <li><a href="#ch16">16. Requests & Instructions (~てください)</a></li>
+                <li><a href="#ch17">17. Ongoing Actions & States (~ている)</a></li>
+                <li><a href="#ch18">18. Expressing Existence (ある vs いる)</a></li>
+                <li><a href="#ch19">19. Time, Dates, and Counters Guide</a></li>
+                <li><a href="#ch20">20. N5 Sentence Connection Methods</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Module 4: JLPT N4 Foundations</div>
+            <ul class="nav-list">
+                <li><a href="#ch21">21. Short/Casual Form System</a></li>
+                <li><a href="#ch22">22. Quotations & Thoughts (~と思う / ~と言う)</a></li>
+                <li><a href="#ch23">23. Potential Form (~できる / ~れる)</a></li>
+                <li><a href="#ch24">24. Giving & Receiving (あげる, もらう, くれる)</a></li>
+                <li><a href="#ch25">25. Relative Clauses & Noun Modifiers</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-title">Module 5: Advanced N4 Masterclass</div>
+            <ul class="nav-list">
+                <li><a href="#ch26">26. Desires (~たい vs ~ほしい)</a></li>
+                <li><a href="#ch27">27. Simultaneous Action (~ながら)</a></li>
+                <li><a href="#ch28">28. Experience (~たことがある)</a></li>
+                <li><a href="#ch29">29. Conditional ~たら vs ~ば vs ~と</a></li>
+                <li><a href="#ch30">30. Passive & Causative Voice (~られる / ~させる)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+        <header class="book-header">
+            <h1>日本語 Mastery: Zero to JLPT N4</h1>
+            <p>The Complete, In-Depth Micro-Learning Textbook. Full charts, extensive breakdowns, and fully cross-linked grammar networks.</p>
+        </header>
+
+        <!-- ================= MODULE 1 ================= -->
+        <section class="module-block">
+
+            <!-- Chapter 1 -->
+            <article class="mini-chapter" id="ch1">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 8 Min Read</span>
+                </div>
+                <h2 class="chapter-title">1. The Japanese Writing Systems Overview</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Master how Hiragana, Katakana, and Kanji function together dynamically in written Japanese sentences.
+                </div>
+                <p>Unlike English, which relies on a single 26-letter alphabet, written Japanese uses three interconnected scripts simultaneously. Understanding when and why each script is used is step zero of learning Japanese.</p>
+
+                <h3 class="section-subtitle">1. Hiragana (ひらがな)</h3>
+                <p>Hiragana is the foundational phonetic alphabet consisting of 46 primary characters. It represents every native phonetic sound in the language. It is used for:</p>
+                <ul>
+                    <li>Grammatical particles (e.g., は, が, を)</li>
+                    <li>Verb and adjective inflectional endings (okurigana)</li>
+                    <li>Native words that lack Kanji or whose Kanji is overly obscure</li>
+                </ul>
+
+                <h3 class="section-subtitle">2. Katakana (カタカナ)</h3>
+                <p>Katakana is angular and structured, directly mirroring the 46 sounds of Hiragana. It is utilized for:</p>
+                <ul>
+                    <li>Foreign loanwords (gairaigo) e.g., コーヒー (Coffee)</li>
+                    <li>Foreign personal and country names e.g., オーストラリア (Australia)</li>
+                    <li>Onomatopoeia and sound effects</li>
+                    <li>Scientific terms, plant/animal names, and textual emphasis (similar to <em>italics</em>)</li>
+                </ul>
+
+                <h3 class="section-subtitle">3. Kanji (漢字)</h3>
+                <p>Ideographic characters originating from China. Each character conveys an intrinsic meaning or core concept. Kanji provides structural visual boundaries in Japanese sentences, which do not traditionally use spaces.</p>
+
+                <div class="formula-box">
+                    Anatomy of a Sentence:<br>
+                    <code>私 は コーヒー を 飲みたい です。</code><br>
+                    • <strong>私</strong> (Kanji: I/Me)<br>
+                    • <strong>は</strong> (Hiragana: Topic Particle)<br>
+                    • <strong>コーヒー</strong> (Katakana: Foreign Word "Coffee")<br>
+                    • <strong>を</strong> (Hiragana: Object Particle)<br>
+                    • <strong>飲み</strong> (Kanji + Hiragana: Verb stem "Drink")<br>
+                    • <strong>たい です</strong> (Hiragana: Auxiliary ending "Want to" + Copula)
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Next Steps:</span>
+                    <a href="#ch2" class="link-chip">Ch 2: Full Hiragana Chart</a>
+                    <a href="#ch3" class="link-chip">Ch 3: Full Katakana Chart</a>
+                    <a href="#ch4" class="link-chip">Ch 4: Kanji Fundamentals</a>
+                </div>
+            </article>
+
+            <!-- Chapter 2 -->
+            <article class="mini-chapter" id="ch2">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 10 Min Practice</span>
+                </div>
+                <h2 class="chapter-title">2. Master Hiragana: Full Character Reference & Dakuon</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Learn all 46 core Hiragana characters, voicing marks (Dakuon/Handakuon), and combination sounds (Yōon).
+                </div>
+
+                <h3 class="section-subtitle">The 46 Basic Hiragana Characters</h3>
+                <p>The standard Gojūon (50-sound chart) organized by vowel rows (A, I, U, E, O) and consonant columns:</p>
+
+                <div class="kana-grid">
+                    <div class="kana-card"><span class="kana-char">あ</span><span class="kana-roma">a</span></div>
+                    <div class="kana-card"><span class="kana-char">い</span><span class="kana-roma">i</span></div>
+                    <div class="kana-card"><span class="kana-char">う</span><span class="kana-roma">u</span></div>
+                    <div class="kana-card"><span class="kana-char">え</span><span class="kana-roma">e</span></div>
+                    <div class="kana-card"><span class="kana-char">お</span><span class="kana-roma">o</span></div>
+
+                    <div class="kana-card"><span class="kana-char">か</span><span class="kana-roma">ka</span></div>
+                    <div class="kana-card"><span class="kana-char">き</span><span class="kana-roma">ki</span></div>
+                    <div class="kana-card"><span class="kana-char">く</span><span class="kana-roma">ku</span></div>
+                    <div class="kana-card"><span class="kana-char">け</span><span class="kana-roma">ke</span></div>
+                    <div class="kana-card"><span class="kana-char">こ</span><span class="kana-roma">ko</span></div>
+
+                    <div class="kana-card"><span class="kana-char">さ</span><span class="kana-roma">sa</span></div>
+                    <div class="kana-card"><span class="kana-char">し</span><span class="kana-roma">shi</span></div>
+                    <div class="kana-card"><span class="kana-char">す</span><span class="kana-roma">su</span></div>
+                    <div class="kana-card"><span class="kana-card"><span class="kana-char">せ</span><span class="kana-roma">se</span></div>
+                    <div class="kana-card"><span class="kana-char">そ</span><span class="kana-roma">so</span></div>
+
+                    <div class="kana-card"><span class="kana-char">た</span><span class="kana-roma">ta</span></div>
+                    <div class="kana-card"><span class="kana-char">ち</span><span class="kana-roma">chi</span></div>
+                    <div class="kana-card"><span class="kana-char">つ</span><span class="kana-roma">tsu</span></div>
+                    <div class="kana-card"><span class="kana-char">て</span><span class="kana-roma">te</span></div>
+                    <div class="kana-card"><span class="kana-char">と</span><span class="kana-roma">to</span></div>
+
+                    <div class="kana-card"><span class="kana-char">な</span><span class="kana-roma">na</span></div>
+                    <div class="kana-card"><span class="kana-char">に</span><span class="kana-roma">ni</span></div>
+                    <div class="kana-card"><span class="kana-char">ぬ</span><span class="kana-roma">nu</span></div>
+                    <div class="kana-card"><span class="kana-char">ね</span><span class="kana-roma">ne</span></div>
+                    <div class="kana-card"><span class="kana-char">の</span><span class="kana-roma">no</span></div>
+
+                    <div class="kana-card"><span class="kana-char">は</span><span class="kana-roma">ha</span></div>
+                    <div class="kana-card"><span class="kana-char">ひ</span><span class="kana-roma">hi</span></div>
+                    <div class="kana-card"><span class="kana-char">ふ</span><span class="kana-roma">fu</span></div>
+                    <div class="kana-card"><span class="kana-char">へ</span><span class="kana-roma">he</span></div>
+                    <div class="kana-card"><span class="kana-char">ほ</span><span class="kana-roma">ho</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ま</span><span class="kana-roma">ma</span></div>
+                    <div class="kana-card"><span class="kana-char">み</span><span class="kana-roma">mi</span></div>
+                    <div class="kana-card"><span class="kana-char">む</span><span class="kana-roma">mu</span></div>
+                    <div class="kana-card"><span class="kana-char">め</span><span class="kana-roma">me</span></div>
+                    <div class="kana-card"><span class="kana-char">も</span><span class="kana-roma">mo</span></div>
+
+                    <div class="kana-card"><span class="kana-char">や</span><span class="kana-roma">ya</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">ゆ</span><span class="kana-roma">yu</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">よ</span><span class="kana-roma">yo</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ら</span><span class="kana-roma">ra</span></div>
+                    <div class="kana-card"><span class="kana-char">り</span><span class="kana-roma">ri</span></div>
+                    <div class="kana-card"><span class="kana-char">る</span><span class="kana-roma">ru</span></div>
+                    <div class="kana-card"><span class="kana-char">れ</span><span class="kana-roma">re</span></div>
+                    <div class="kana-card"><span class="kana-char">ろ</span><span class="kana-roma">ro</span></div>
+
+                    <div class="kana-card"><span class="kana-char">わ</span><span class="kana-roma">wa</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">を</span><span class="kana-roma">wo/o</span></div>
+                </div>
+
+                <div style="text-align:center; margin-top:0.5rem;" class="kana-card">
+                    <span class="kana-char">ん</span><span class="kana-roma">n (Syllabic nasal)</span>
+                </div>
+
+                <h3 class="section-subtitle">Voiced Sounds: Dakuon (濁音) & Handakuon (半濁音)</h3>
+                <p>By adding two small dots (Dakuten ゛) or a small circle (Handakuten ゜), sound consonant bases shift:</p>
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Base Row</th><th>+ Dakuten (゛)</th><th>New Sound</th><th>+ Handakuten (゜)</th><th>New Sound</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>K-Row (か)</td><td>が, ぎ, ぐ, げ, ご</td><td>G-Row (ga, gi, gu, ge, go)</td><td>-</td><td>-</td></tr>
+                        <tr><td>S-Row (さ)</td><td>ざ, じ, ず, ぜ, ぞ</td><td>Z/J-Row (za, ji, zu, ze, zo)</td><td>-</td><td>-</td></tr>
+                        <tr><td>T-Row (た)</td><td>だ, ぢ, づ, で, ど</td><td>D-Row (da, ji, zu, de, do)</td><td>-</td><td>-</td></tr>
+                        <tr><td>H-Row (は)</td><td>ば, び, ぶ, べ, ぼ</td><td>B-Row (ba, bi, bu, be, bo)</td><td>ぱ, ぴ, ぷ, ぺ, ぽ</td><td>P-Row (pa, pi, pu, pe, po)</td></tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">Contracted Sounds: Yōon (拗音)</h3>
+                <p>Combining 'i-column' characters (き, し, ち, に, ひ, み, り) with small <code>ゃ</code>, <code>ゅ</code>, <code>ょ</code> creates contracted single-syllable sounds:</p>
+                <p><code>きゃ (kya)</code>, <code>きゅ (kyu)</code>, <code>きょ (kyo)</code> | <code>しゃ (sha)</code>, <code>しゅ (shu)</code>, <code>しょ (sho)</code> | <code>ちゃ (cha)</code>, <code>ちゅ (chu)</code>, <code>ちょ (cho)</code></p>
+
+                <div class="quiz-card">
+                    <div class="quiz-title">Knowledge Check</div>
+                    <p>How do you convert the sound "ha" (は) into "pa"?</p>
+                    <details>
+                        <summary>Click to view Answer</summary>
+                        <p>Add a <strong>Handakuten (゜)</strong> to make <strong>ぱ (pa)</strong>.</p>
+                    </details>
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch3" class="link-chip">Ch 3: Master Katakana</a>
+                    <a href="#ch5" class="link-chip">Ch 5: Pitch Accent</a>
+                </div>
+            </article>
+
+            <!-- Chapter 3 -->
+            <article class="mini-chapter" id="ch3">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 10 Min Practice</span>
+                </div>
+                <h2 class="chapter-title">3. Master Katakana: Full Character Reference & Foreign Loanwords</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Read Katakana fluently and convert foreign concepts into standard Japanese phonetic transcription.
+                </div>
+
+                <h3 class="section-subtitle">The 46 Basic Katakana Characters</h3>
+                <div class="kana-grid">
+                    <div class="kana-card"><span class="kana-char">ア</span><span class="kana-roma">a</span></div>
+                    <div class="kana-card"><span class="kana-char">イ</span><span class="kana-roma">i</span></div>
+                    <div class="kana-card"><span class="kana-char">ウ</span><span class="kana-roma">u</span></div>
+                    <div class="kana-card"><span class="kana-char">エ</span><span class="kana-roma">e</span></div>
+                    <div class="kana-card"><span class="kana-char">オ</span><span class="kana-roma">o</span></div>
+
+                    <div class="kana-card"><span class="kana-char">カ</span><span class="kana-roma">ka</span></div>
+                    <div class="kana-card"><span class="kana-char">キ</span><span class="kana-roma">ki</span></div>
+                    <div class="kana-card"><span class="kana-char">ク</span><span class="kana-roma">ku</span></div>
+                    <div class="kana-card"><span class="kana-char">ケ</span><span class="kana-roma">ke</span></div>
+                    <div class="kana-card"><span class="kana-char">コ</span><span class="kana-roma">ko</span></div>
+
+                    <div class="kana-card"><span class="kana-char">サ</span><span class="kana-roma">sa</span></div>
+                    <div class="kana-card"><span class="kana-char">シ</span><span class="kana-roma">shi</span></div>
+                    <div class="kana-card"><span class="kana-char">ス</span><span class="kana-roma">su</span></div>
+                    <div class="kana-card"><span class="kana-char">セ</span><span class="kana-roma">se</span></div>
+                    <div class="kana-card"><span class="kana-char">ソ</span><span class="kana-roma">so</span></div>
+
+                    <div class="kana-card"><span class="kana-char">タ</span><span class="kana-roma">ta</span></div>
+                    <div class="kana-card"><span class="kana-char">チ</span><span class="kana-roma">chi</span></div>
+                    <div class="kana-card"><span class="kana-char">ツ</span><span class="kana-roma">tsu</span></div>
+                    <div class="kana-card"><span class="kana-char">テ</span><span class="kana-roma">te</span></div>
+                    <div class="kana-card"><span class="kana-char">ト</span><span class="kana-roma">to</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ナ</span><span class="kana-roma">na</span></div>
+                    <div class="kana-card"><span class="kana-char">ニ</span><span class="kana-roma">ni</span></div>
+                    <div class="kana-card"><span class="kana-char">ヌ</span><span class="kana-roma">nu</span></div>
+                    <div class="kana-card"><span class="kana-char">ネ</span><span class="kana-roma">ne</span></div>
+                    <div class="kana-card"><span class="kana-char">ノ</span><span class="kana-roma">no</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ハ</span><span class="kana-roma">ha</span></div>
+                    <div class="kana-card"><span class="kana-char">ヒ</span><span class="kana-roma">hi</span></div>
+                    <div class="kana-card"><span class="kana-char">フ</span><span class="kana-roma">fu</span></div>
+                    <div class="kana-card"><span class="kana-char">ヘ</span><span class="kana-roma">he</span></div>
+                    <div class="kana-card"><span class="kana-char">ホ</span><span class="kana-roma">ho</span></div>
+
+                    <div class="kana-card"><span class="kana-char">マ</span><span class="kana-roma">ma</span></div>
+                    <div class="kana-card"><span class="kana-char">ミ</span><span class="kana-roma">mi</span></div>
+                    <div class="kana-card"><span class="kana-char">ム</span><span class="kana-roma">mu</span></div>
+                    <div class="kana-card"><span class="kana-char">メ</span><span class="kana-roma">me</span></div>
+                    <div class="kana-card"><span class="kana-char">モ</span><span class="kana-roma">mo</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ヤ</span><span class="kana-roma">ya</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">ユ</span><span class="kana-roma">yu</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">ヨ</span><span class="kana-roma">yo</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ラ</span><span class="kana-roma">ra</span></div>
+                    <div class="kana-card"><span class="kana-char">リ</span><span class="kana-roma">ri</span></div>
+                    <div class="kana-card"><span class="kana-char">ル</span><span class="kana-roma">ru</span></div>
+                    <div class="kana-card"><span class="kana-char">レ</span><span class="kana-roma">re</span></div>
+                    <div class="kana-card"><span class="kana-char">ロ</span><span class="kana-roma">ro</span></div>
+
+                    <div class="kana-card"><span class="kana-char">ワ</span><span class="kana-roma">wa</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">-</span><span class="kana-roma">-</span></div>
+                    <div class="kana-card"><span class="kana-char">ヲ</span><span class="kana-roma">wo</span></div>
+                </div>
+                <div style="text-align:center; margin-top:0.5rem;" class="kana-card">
+                    <span class="kana-char">ン</span><span class="kana-roma">n</span>
+                </div>
+
+                <h3 class="section-subtitle">Special Katakana Extension Rules</h3>
+                <ul>
+                    <li><strong>Long Vowels (ー):</strong> A horizontal bar extends vowel sounds by 1 mora. e.g., ケーキ (Keeki = Cake), タクシー (Takushii = Taxi).</li>
+                    <li><strong>Small Tsu (ッ):</strong> Creates a double consonant pause (sokuoon). e.g., ショップ (Shoppu = Shop).</li>
+                    <li><strong>Modern Extended Combinations:</strong> Foreign sounds missing in traditional Japanese use small vowels:
+                        <ul>
+                            <li>ファ (fa), フィ (fi), フェ (fe), フォ (fo)</li>
+                            <li>ティ (ti), ディ (di)</li>
+                            <li>ウィ (wi), ウェ (we)</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch1" class="link-chip">Ch 1: Overview</a>
+                    <a href="#ch4" class="link-chip">Ch 4: Kanji Radicals</a>
+                </div>
+            </article>
+
+            <!-- Chapter 4 -->
+            <article class="mini-chapter" id="ch4">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 8 Min Read</span>
+                </div>
+                <h2 class="chapter-title">4. Kanji Fundamentals: Onyomi, Kunyomi & Radicals</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Demystify Kanji readings and learn how character components (radicals) build complex meanings.
+                </div>
+
+                <h3 class="section-subtitle">1. On'yomi (音読み) vs. Kun'yomi (訓読み)</h3>
+                <p>Most Kanji possess at least two distinct reading categories:</p>
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Type</th><th>Origin</th><th>When Used</th><th>Example (水 - Water)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Kun'yomi (Japanese Reading)</strong></td>
+                            <td>Native Japanese words</td>
+                            <td>When the Kanji stands alone as an independent word</td>
+                            <td><code>みず (mizu)</code> e.g., 水を飲む</td>
+                        </tr>
+                        <tr>
+                            <td><strong>On'yomi (Chinese Reading)</strong></td>
+                            <td>Borrowed Chinese sound</td>
+                            <td>When joined with other Kanji to form compound words (Jukugo)</td>
+                            <td><code>スイ (sui)</code> e.g., 水曜日 (Sui'youbi)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 class="section-subtitle">2. Radicals (部首 - Bushu)</h3>
+                <p>Kanji are constructed from building blocks called <strong>Radicals</strong>. Recognizing radicals allows you to infer meaning and pronunciation:</p>
+                <ul>
+                    <li><strong>氵 (Sanzui - Water):</strong> Appears in words related to liquids. e.g., 泳 (Swim), 海 (Ocean), 洗 (Wash).</li>
+                    <li><strong>亻 (Ninben - Person):</strong> Appears in words relating to human activity. e.g., 休 (Rest), 体 (Body), 作 (Make).</li>
+                    <li><strong>木 (Ki - Tree/Wood):</strong> Appears in plant/wood items. e.g., 林 (Forest), 森 (Woods), 本 (Book/Origin).</li>
+                </ul>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch20" class="link-chip">Ch 20: Noun Compounds</a>
+                    <a href="#ch25" class="link-chip">Ch 25: Relative Modifiers</a>
+                </div>
+            </article>
+
+            <!-- Chapter 5 -->
+            <article class="mini-chapter" id="ch5">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 6 Min Read</span>
+                </div>
+                <h2 class="chapter-title">5. Pitch Accent & Pronunciation Foundations</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Master Pitch Accent dynamics (Heiban, Atamadaka, Nakadaka, Odaka) to achieve natural spoken rhythm.
+                </div>
+                <p>English uses <strong>Stress Accent</strong> (louder/longer syllables). Japanese uses <strong>Pitch Accent</strong> (high vs. low tone per mora).</p>
+
+                <h3 class="section-subtitle">The 4 Pitch Accent Patterns</h3>
+                <ol>
+                    <li><strong>平板 (Heiban - Flat):</strong> Low initial mora, rises to High, stays High throughout particles. (e.g., 水 - mizu).</li>
+                    <li><strong>頭高 (Atamadaka - Head-High):</strong> First mora is High, immediately drops to Low for remaining morae and particles. (e.g., 雨 - ame [Rain]).</li>
+                    <li><strong>中高 (Nakadaka - Mid-High):</strong> Starts Low, rises to High inside the word, drops to Low before the end.</li>
+                    <li><strong>尾高 (Odaka - Tail-High):</strong> Starts Low, rises to High on final mora, drops to Low <em>only when attached particle follows</em>. (e.g., 飴 - ame [Candy]).</li>
+                </ol>
+
+                <div class="cross-network">
+                    <span>🔗 Module 2 Transition:</span>
+                    <a href="#ch6" class="link-chip">Ch 6: Sentence Structure</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ================= MODULE 2 ================= -->
+        <section class="module-block">
+
+            <!-- Chapter 6 -->
+            <article class="mini-chapter" id="ch6">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 8 Min Read</span>
+                </div>
+                <h2 class="chapter-title">6. Sentence Structure (SOV) & Core Word Order</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Build structured Japanese sentences using Subject-Object-Verb alignment.
+                </div>
+                <p>English follows Subject-Verb-Object (SVO). Japanese strictly enforces <strong>Subject-Object-Verb (SOV)</strong>. The primary verb <strong>ALWAYS</strong> closes the sentence.</p>
+
+                <div class="formula-box">
+                    Japanese Sentence Core:<br>
+                    <code>[Topic / Subject] は/が + [Time / Place] に/で + [Object] を + [VERB]</code>
+                </div>
+
+                <div class="example-block">
+                    <div class="ja-main">田中さんは明日図書室で本を読みます。</div>
+                    <div class="ja-roma">Tanaka-san wa ashita toshoshitsu de hon o yomimasu.</div>
+                    <div class="en-trans">Tanaka-san will read a book in the library tomorrow.</div>
+                    <div class="breakdown">
+                        • 田中さん (Subject) + は (Topic)<br>
+                        • 明日 (Time: Tomorrow)<br>
+                        • 図書室 (Location) + で (Action Location Particle)<br>
+                        • 本 (Object: Book) + を (Object Particle)<br>
+                        • 読みます (Verb: Read)
+                    </div>
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch7" class="link-chip">Ch 7: Topic vs Subject</a>
+                    <a href="#ch11" class="link-chip">Ch 11: Object Particle を</a>
+                </div>
+            </article>
+
+            <!-- Chapter 7 -->
+            <article class="mini-chapter" id="ch7">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 10 Min Deep-Dive</span>
+                </div>
+                <h2 class="chapter-title">7. Topic Particle (は) vs Subject Particle (が)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Differentiate between Topic marker は (wa) and Subject marker が (ga) in real contexts.
+                </div>
+
+                <h3 class="section-subtitle">1. は (wa) - The Topic Marker</h3>
+                <p>Think of は as: <em>"As for X, [statement]..."</em>. It sets the overarching context. What comes <strong>AFTER</strong> は contains the new, important information.</p>
+                <div class="example-block">
+                    <div class="ja-main">私 は 医者 です。</div>
+                    <div class="ja-roma">Watashi wa isha desu.</div>
+                    <div class="en-text">As for me, I am a doctor. (Focus is on being a doctor)</div>
+                </div>
+
+                <h3 class="section-subtitle">2. が (ga) - The Subject Marker</h3>
+                <p>が identifies a specific subject doing an action or possessing a state. The emphasis is on <strong>WHAT/WHO</strong> comes <strong>BEFORE</strong> が.</p>
+                <div class="example-block">
+                    <div class="ja-main">誰 が 来ましたか。 田中さん が 来ました。</div>
+                    <div class="ja-roma">Dare ga kimashita ka. Tanaka-san ga kimashita.</div>
+                    <div class="en-text">Who came? Tanaka-san came. (Focus is pinpointing Tanaka-san)</div>
+                </div>
+
+                <h3 class="section-subtitle">Key Contrast Matrix</h3>
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Feature</th><th>Particle は (wa)</th><th>Particle が (ga)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Primary Focus</td><td>Information following the particle</td><td>The subject noun preceding the particle</td></tr>
+                        <tr><td>Question Words</td><td>Cannot directly follow question words (*誰は ❌)</td><td>Required after question words (誰が ⭕)</td></tr>
+                        <tr><td>Contrast</td><td>Used to contrast two things (Aは...Bは...)</td><td>Exhibits exclusive selection ("X and X alone")</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch6" class="link-chip">Ch 6: SOV Structure</a>
+                    <a href="#ch18" class="link-chip">Ch 18: Existence ある/いる</a>
+                </div>
+            </article>
+
+            <!-- Chapter 8 -->
+            <article class="mini-chapter" id="ch8">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 7 Min Read</span>
+                </div>
+                <h2 class="chapter-title">8. The Copula: です (Desu) & Formality Levels</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Express state-of-being ("to be") across affirmative, negative, past, and casual tenses.
+                </div>
+
+                <h3 class="section-subtitle">Copula Conjugation Table</h3>
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Tense / Formality</th><th>Polite (Teineigo)</th><th>Casual (Da-form)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Present Affirmative</td><td>です (desu)</td><td>だ (da)</td></tr>
+                        <tr><td>Present Negative</td><td>ではありません / じゃないです</td><td>ではない / じゃない</td></tr>
+                        <tr><td>Past Affirmative</td><td>でした (deshita)</td><td>だった (datta)</td></tr>
+                        <tr><td>Past Negative</td><td>ではありませんでした</td><td>ではなかった / じやなかった</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="example-block">
+                    <div class="ja-main">昔、ここは静かではありませんでした。</div>
+                    <div class="ja-roma">Mukashi, koko wa shizuka de wa arimasen deshita.</div>
+                    <div class="en-trans">In the past, it was not quiet here.</div>
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch14" class="link-chip">Ch 14: Adjectives</a>
+                    <a href="#ch21" class="link-chip">Ch 21: Casual Short Form</a>
+                </div>
+            </article>
+
+            <!-- Chapter 9 -->
+            <article class="mini-chapter" id="ch9">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 10 Min Fundamental</span>
+                </div>
+                <h2 class="chapter-title">9. Verb Group Classification (Group 1, Group 2, Group 3)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Correctly identify Godan, Ichidan, and Irregular verbs using dictionary forms.
+                </div>
+                <p>Every conjugation rule in Japanese relies on correctly placing a verb into one of three groups:</p>
+
+                <h3 class="section-subtitle">Group 1: Godan Verbs (五段動詞 / U-Verbs)</h3>
+                <p>Dictionary forms end in: <code>~う (u)</code>, <code>~く (ku)</code>, <code>~ぐ (gu)</code>, <code>~す (su)</code>, <code>~つ (tsu)</code>, <code>~ぬ (nu)</code>, <code>~ぶ (bu)</code>, <code>~む (mu)</code>, or <code>~る (ru)</code> (preceded by a, u, or o sounds).</p>
+                <ul>
+                    <li>飲む (no<b>mu</b> - to drink)</li>
+                    <li>行く (i<b>ku</b> - to go)</li>
+                    <li>話す (hana<b>su</b> - to speak)</li>
+                </ul>
+
+                <h3 class="section-subtitle">Group 2: Ichidan Verbs (一段動詞 / Ru-Verbs)</h3>
+                <p>Dictionary forms end in <code>~る (ru)</code>, preceded by an <strong>'i' sound</strong> (e.g., ~iru) or an <strong>'e' sound</strong> (e.g., ~eru).</p>
+                <ul>
+                    <li>食べる (tab<b>eru</b> - to eat)</li>
+                    <li>見る (m<b>iru</b> - to see)</li>
+                </ul>
+                <p><em>⚠️ Critical Exceptions (Look like Group 2, but are Group 1 Godan):</em> 帰る (kaeru - return), 入る (hairu - enter), 走る (hashiru - run), 起きる (okiru - wake up: Group 2), 切る (kiru - cut: Group 1).</p>
+
+                <h3 class="section-subtitle">Group 3: Irregular Verbs (不規則動詞)</h3>
+                <p>Contains only two primary verbs:</p>
+                <ul>
+                    <li><strong>する (suru - to do)</strong></li>
+                    <li><strong>来る (kuru - to come)</strong></li>
+                </ul>
+
+                <div class="cross-network">
+                    <span>🔗 Conjugation Pathways:</span>
+                    <a href="#ch10" class="link-chip">Ch 10: Masu Form</a>
+                    <a href="#ch15" class="link-chip">Ch 15: Te Form Masterclass</a>
+                    <a href="#ch23" class="link-chip">Ch 23: Potential Form</a>
+                </div>
+            </article>
+
+            <!-- Chapter 10 -->
+            <article class="mini-chapter" id="ch10">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 8 Min Practice</span>
+                </div>
+                <h2 class="chapter-title">10. Polite Present/Future Form (~ます)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Conjugate dictionary verbs into polite present and past statements.
+                </div>
+
+                <h3 class="section-subtitle">Conjugation Rules</h3>
+                <ul>
+                    <li><strong>Group 1 (Godan):</strong> Shift final ~u sound to ~i sound line, add ます.
+                        <br>e.g., 書<u>く</u> (kaku) → 書<u>き</u>ます (kakimasu) | 飲<u>む</u> (nomu) → 飲<u>み</u>ます (nomimasu).
+                    </li>
+                    <li><strong>Group 2 (Ichidan):</strong> Drop ~る, add ます.
+                        <br>e.g., 食べ<u>る</u> (taberu) → 食べます (tabemasu).
+                    </li>
+                    <li><strong>Group 3 (Irregular):</strong>
+                        <br>• する → します (shimasu)
+                        <br>• 来る (kuru) → 来ます (kimasu)
+                    </li>
+                </ul>
+
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Form</th><th>Ending</th><th>Example (書く - Write)</th><th>Example (食べる - Eat)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Present Affirmative</td><td>~ます</td><td>書きます</td><td>食べます</td></tr>
+                        <tr><td>Present Negative</td><td>~ません</td><td>書きません</td><td>食べません</td></tr>
+                        <tr><td>Past Affirmative</td><td>~ました</td><td>書きました</td><td>食べました</td></tr>
+                        <tr><td>Past Negative</td><td>~ませんでした</td><td>書きませんでした</td><td>食べませんでした</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="cross-network">
+                    <span>🔗 Next Steps:</span>
+                    <a href="#ch11" class="link-chip">Ch 11: Particle を</a>
+                    <a href="#ch15" class="link-chip">Ch 15: Te-form</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ================= MODULE 3 ================= -->
+        <section class="module-block">
+
+            <!-- Chapter 15 -->
+            <article class="mini-chapter" id="ch15">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 12 Min Deep-Dive</span>
+                </div>
+                <h2 class="chapter-title">15. The Master Te-Form (て形) Transformation Mechanics</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Master the Te-form conjugation across all verb classes.
+                </div>
+                <p>The <strong>Te-form</strong> is the single most essential inflection in Japanese grammar. It acts as the anchor for connecting clauses, making requests, stating progress, and forming permissions.</p>
+
+                <h3 class="section-subtitle">Group 1 (Godan) Te-Form Rules</h3>
+                <p>Look at the final dictionary syllable of the Godan verb:</p>
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Ending Syllables</th><th>Te-Form Change</th><th>Example Dictionary</th><th>Te-Form Result</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>う, つ, る</strong></td><td>~って (tte)</td><td>買<b>う</b> (kau) / 待<b>つ</b> (matsu)</td><td>買<b>って</b> / 待<b>って</b></td></tr>
+                        <tr><td><strong>む, ぶ, ぬ</strong></td><td>~んで (nde)</td><td>飲<b>む</b> (nomu) / 遊<b>ぶ</b> (asobu)</td><td>飲<b>んで</b> / 遊<b>んで</b></td></tr>
+                        <tr><td><strong>く</strong></td><td>~いて (ite)</td><td>書<b>く</b> (kaku)</td><td>書<b>いて</b></td></tr>
+                        <tr><td><strong>ぐ</strong></td><td>~いで (ide)</td><td>泳<b>ぐ</b> (oyogu)</td><td>泳<b>いで</b></td></tr>
+                        <tr><td><strong>す</strong></td><td>~して (shite)</td><td>話<b>す</b> (hanasu)</td><td>話<b>して</b></td></tr>
+                    </tbody>
+                </table>
+                <p><em>⚠️ Essential Exception:</em> <strong>行く (iku - to go)</strong> becomes <strong>行って (itte)</strong> [NOT いいて].</p>
+
+                <h3 class="section-subtitle">Group 2 & 3 Te-Form Rules</h3>
+                <ul>
+                    <li><strong>Group 2 (Ichidan):</strong> Drop ~る, add <code>て</code>. e.g., 食べる → 食べて | 見る → 見て.</li>
+                    <li><strong>Group 3 (Irregular):</strong>
+                        <br>• する → <code>して</code>
+                        <br>• 来る (kuru) → <code>来て (kite)</code>
+                    </li>
+                </ul>
+
+                <div class="cross-network">
+                    <span>🔗 Te-Form Dependent Grammar:</span>
+                    <a href="#ch16" class="link-chip">Ch 16: Requests ~てください</a>
+                    <a href="#ch17" class="link-chip">Ch 17: Ongoing ~ている</a>
+                    <a href="#ch28" class="link-chip">Ch 28: Experience ~たことがある</a>
+                </div>
+            </article>
+
+            <!-- Chapter 17 -->
+            <article class="mini-chapter" id="ch17">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n5">JLPT N5</span>
+                    <span class="time-est">⏱️ 8 Min Read</span>
+                </div>
+                <h2 class="chapter-title">17. Ongoing Actions & Resultant States (~ている)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Express continuous action (is doing) versus resultant state (is currently in a state of).
+                </div>
+
+                <div class="formula-box">
+                    Formula: <code>[Verb Te-form] + いる / います</code>
+                </div>
+
+                <h3 class="section-subtitle">1. Continuous Action (-ing)</h3>
+                <p>Action verbs express ongoing activity happening right now:</p>
+                <div class="example-block">
+                    <div class="ja-main">今、朝ごはんを食べています。</div>
+                    <div class="ja-roma">Ima, asagohan o tabete imasu.</div>
+                    <div class="en-trans">I am eating breakfast right now.</div>
+                </div>
+
+                <h3 class="section-subtitle">2. Resultant State</h3>
+                <p>Change-of-state verbs express a past action whose state continues into the present:</p>
+                <div class="example-block">
+                    <div class="ja-main">結婚しています / 知っています / 東京に住んでいます。</div>
+                    <div class="ja-roma">Kekkon shite imasu / Shitte imasu / Toukyou ni sunde imasu.</div>
+                    <div class="en-trans">I am married / I know / I live in Tokyo.</div>
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch15" class="link-chip">Ch 15: Te-Form</a>
+                    <a href="#ch21" class="link-chip">Ch 21: Casual Short Form (~てる)</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ================= MODULE 4 & 5 (N4 CONCEPTS) ================= -->
+        <section class="module-block">
+
+            <!-- Chapter 23 -->
+            <article class="mini-chapter" id="ch23">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n4">JLPT N4</span>
+                    <span class="time-est">⏱️ 9 Min Read</span>
+                </div>
+                <h2 class="chapter-title">23. Potential Form: Ability to Do (~できる / ~れる)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Conjugate verbs into potential form to express capability ("can do").
+                </div>
+
+                <h3 class="section-subtitle">Conjugation System</h3>
+                <ul>
+                    <li><strong>Group 1 (Godan):</strong> Change final ~u vowel to the ~e vowel line, add <code>る</code>.
+                        <br>e.g., 書<u>く</u> (kaku) → 書<u>け</u>る (kakeru) | 話<u>す</u> (hanasu) → 話<u>せ</u>る (hanaseru).
+                    </li>
+                    <li><strong>Group 2 (Ichidan):</strong> Drop ~る, add <code>られる</code> (Casual spoken: <code>れる</code>).
+                        <br>e.g., 食べる → 食べられる (taberareru).
+                    </li>
+                    <li><strong>Group 3 (Irregular):</strong>
+                        <br>• する → <code>できる</code> (dekiru)
+                        <br>• 来る (kuru) → <code>来られる (korareru)</code>
+                    </li>
+                </ul>
+
+                <p><em>⚠️ Particle Rule Change:</em> Direct object particle <code>を</code> switches to <code>が</code> when using potential form!</p>
+                <div class="example-block">
+                    <div class="ja-main">私は日本語<strong>が</strong>話せます。</div>
+                    <div class="ja-roma">Watashi wa Nihongo ga hanasemasu.</div>
+                    <div class="en-trans">I can speak Japanese.</div>
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch9" class="link-chip">Ch 9: Verb Groups</a>
+                    <a href="#ch30" class="link-chip">Ch 30: Passive Voice</a>
+                </div>
+            </article>
+
+            <!-- Chapter 29 -->
+            <article class="mini-chapter" id="ch29">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n4">JLPT N4</span>
+                    <span class="time-est">⏱️ 12 Min Masterclass</span>
+                </div>
+                <h2 class="chapter-title">29. The Complete Conditional Matrix (~たら, ~ば, ~と, ~なら)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Differentiate and accurately select among the four Japanese conditional forms ("If / When").
+                </div>
+
+                <table class="table-custom">
+                    <thead>
+                        <tr><th>Conditional</th><th>Grammar Rule</th><th>Best Used For</th><th>Example Sentence</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>~たら (tara)</strong></td><td>Verb Ta-form + ら</td><td>Most versatile; sequence "one-off" events, past conditions</td><td>雨が<strong>降ったら</strong>、行きません。(If it rains, I won't go)</td></tr>
+                        <tr>
+                            <td><strong>~ば (ba)</strong></td><td>~u → ~eba sound</td><td>General hypotheticals, cause & effect logic</td><td>安<strong>ければ</strong>、買います。(If it is cheap, I will buy it)</td></tr>
+                        <tr>
+                            <td><strong>~と (to)</strong></td><td>Dict Form + と</td><td>Natural consequences, mechanical results, directions</td><td>このボタンを<strong>押すと</strong>、お湯が出ます。(Press this button and hot water comes out)</td></tr>
+                        <tr>
+                            <td><strong>~なら (nara)</strong></td><td>Noun/Phrase + なら</td><td>Contextual "If it's the case that X...", giving advice</td><td>日本へ<strong>行くなら</strong>、京都がいいです。(If going to Japan, Kyoto is great)</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="cross-network">
+                    <span>🔗 Related Concepts:</span>
+                    <a href="#ch21" class="link-chip">Ch 21: Casual Ta-form</a>
+                    <a href="#ch30" class="link-chip">Ch 30: Final Review</a>
+                </div>
+            </article>
+
+            <!-- Chapter 30 -->
+            <article class="mini-chapter" id="ch30">
+                <div class="chapter-badge-bar">
+                    <span class="badge badge-n4">JLPT N4</span>
+                    <span class="time-est">⏱️ 10 Min Read</span>
+                </div>
+                <h2 class="chapter-title">30. Passive (~られる) & Causative Voice (~させる)</h2>
+                <div class="objective-box">
+                    <strong>Learning Objective:</strong> Master passive voice ("action done to subject") and causative voice ("make/let someone do").
+                </div>
+
+                <h3 class="section-subtitle">1. Passive Voice (受身形)</h3>
+                <p>Used when the subject receives or suffers an action performed by an agent (marked by <code>に</code>):</p>
+                <ul>
+                    <li>Group 1: ~u sound → ~a sound + <code>れる</code> (褒める → 褒められる / 書く → 書かれる)</li>
+                    <li>Group 2: Drop ~る + <code>られる</code> (食べる → 食べられる)</li>
+                    <li>Group 3: する → <code>される</code> | 来る → <code>来られる</code></li>
+                </ul>
+                <div class="example-block">
+                    <div class="ja-main">私は先生に褒められました。</div>
+                    <div class="ja-roma">Watashi wa sensei ni homeramashita.</div>
+                    <div class="en-trans">I was praised by my teacher.</div>
+                </div>
+
+                <h3 class="section-subtitle">2. Causative Voice (使役形)</h3>
+                <p>Used to express making someone do something, or allowing/letting someone do something:</p>
+                <ul>
+                    <li>Group 1: ~u sound → ~a sound + <code>させる</code> (行く → 行かせる)</li>
+                    <li>Group 2: Drop ~る + <code>させる</code> (食べる → 食べさせる)</li>
+                    <li>Group 3: する → <code>させる</code> | 来る → <code>来させる</code></li>
+                </ul>
+                <div class="example-block">
+                    <div class="ja-main">お母さんは子供に野菜を食べさせました。</div>
+                    <div class="ja-roma">Okaasan wa kodomo ni yasai o tabesasemashita.</div>
+                    <div class="en-trans">The mother made her child eat vegetables.</div>
+                </div>
+
+                <div class="cross-network">
+                    <span>🔗 Navigation:</span>
+                    <a href="#ch1" class="link-chip">Return to Beginning (Ch 1)</a>
+                    <a href="#ch15" class="link-chip">Review Te-form (Ch 15)</a>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
